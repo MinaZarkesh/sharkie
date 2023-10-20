@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minas Sharkie NEU</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/models/images-arrays.js"></script>
+    <script src="../js/models/movable-object.class.js"></script>
+    <script src="../js/models/character.class.js"></script>
+    <script src="../js/models/fish.class.js"></script>
+    <script src="../js/models/background-object.class.js"></script>
+    <script src="../js/models/endboss.class.js"></script>
+    <script src="../js/models/keyboard.class.js"></script>
+    <script src="../js/models/level.class.js"></script>
+    <script src="../levels/level1.js"></script>
+    <script src="../js/models/world.class.js"></script>
+    <script src="../js/game.js"></script>
+  </head>
+  <body>
+    <div id="startScreen" class="startScreen">
+      <div class="backgound">
+        <h1>Minas Sharkie</h1>
+        <h2>defeat the monsters of the oceans</h2>
+        <div class="Start-Instructions">
+          <img src="./img/6.Botones/Instructions 1.png" alt="" />
+        </div>
+        <div class="">
+          <button id="startGame" onclick="startGame()">
+            <img src="./img/6.Botones/Start/2.png" alt="" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="game" class="game d-none">
+      <h1>Sharkie</h1>
+      <canvas id="canvas" width="720" , height="480"></canvas>
+      <img
+        id="gameOver"
+        class="d-none"
+        src="./img/6.Botones/Tittles/Game Over/Recurso 12.png"
+        alt="Game over"
+      />
+      <button onclick="restartGame()" class="d-none" id="restart">
+        RESTART
+      </button>
+    </div>
+  </body>
+</html>

@@ -22,22 +22,25 @@ class World {
 
   checkCollisions() {
     setStoppableInterval(() => {
-      this.checkEnemyCollisions();
-      
+      if (this.character.isDead()) {
+        isGameStopped = true;
+      } else {
+        this.checkEnemyCollisions();
+      }
     }, 500); //2mal pro sekunde
   }
 
-  checkEnemyCollisions(){
+  checkEnemyCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         if (enemy instanceof Endboss) {
-          this.character.isHurt();
-          this.character.isHurt();
+          this.character.hit();
+          this.character.hit();
         } else {
           if (this.character.isFinSlap) {
-            enemy.isHurt();
+            enemy.hit();
           } else {
-            this.character.isHurt();
+            this.character.hit();
             // enemy can not attack again for 1sec
           }
         }

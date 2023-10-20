@@ -12,12 +12,12 @@ class Endboss extends MovableObject {
 
   y = 0;
   x = 2300;
-  IMAGES=IMAGES_ENDBOSS_FLOATING;
+  IMAGES = IMAGES_ENDBOSS_FLOATING;
   IMAGES_ENDBOSS_INTRODUCING = IMAGES_ENDBOSS_INTRODUCING;
   IMAGES_ENDBOSS_FLOATING = IMAGES_ENDBOSS_FLOATING;
   IMAGES_ENDBOSS_ATTACK = IMAGES_ENDBOSS_ATTACK;
   IMAGES_ENDBOSS_HURT = IMAGES_ENDBOSS_HURT;
-  IMAGES_ENDBOSS_DEAD=IMAGES_ENDBOSS_DEAD;
+  IMAGES_ENDBOSS_DEAD = IMAGES_ENDBOSS_DEAD;
 
   constructor() {
     super().loadImage(this.IMAGES[0]);
@@ -29,9 +29,7 @@ class Endboss extends MovableObject {
     this.animate();
   }
 
-  isHurt(){
-    console.log("Endboss: AUA");
-     }
+
 
   animate() {
     setStoppableInterval(() => {

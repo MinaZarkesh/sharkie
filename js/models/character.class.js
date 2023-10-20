@@ -41,10 +41,6 @@ class Character extends MovableObject {
     this.animate(); //animate
   }
 
-  isHurt() {
-    console.log("Character: AUA");
-  }
-
   animate() {
     setInterval(() => {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -62,25 +58,29 @@ class Character extends MovableObject {
     }, 1000 / fps);
 
     setStoppableInterval(() => {
-      if (this.world.keyboard.SPACE && this.isFinSlap) {
-        this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
+      if (this.isDead()) {
+        this.IMAGES = this.IMAGES_DEAD;
       } else {
-        if (
-          this.world.keyboard.RIGHT ||
-          this.world.keyboard.LEFT ||
-          this.world.keyboard.UP ||
-          this.world.keyboard.DOWN
-        ) {
-          //walk animation
-          this.IMAGES = this.IMAGES_SWIM;
-        } else if (this.world.keyboard.D) {
-          this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
+        if (this.world.keyboard.SPACE && this.isFinSlap) {
+          this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
         } else {
-          this.IMAGES = this.IMAGES_IDLE;
+          if (
+            this.world.keyboard.RIGHT ||
+            this.world.keyboard.LEFT ||
+            this.world.keyboard.UP ||
+            this.world.keyboard.DOWN
+          ) {
+            //walk animation
+            this.IMAGES = this.IMAGES_SWIM;
+          } else if (this.world.keyboard.D) {
+            this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
+          } else {
+            this.IMAGES = this.IMAGES_IDLE;
+          }
         }
       }
-
       this.imageLoop(); // playAnimation
+      
     }, 1000 / (fps / 10));
   }
 

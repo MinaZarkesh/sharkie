@@ -5,30 +5,36 @@ class MovableObject {
   imageCache = {}; //for animation, Bilderabfolge
   width = 100;
   height = 150;
-
   offset = {
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
   };
-
   //for imageLoop
   currentImage = 0;
+  //isDead bei energy = 0;
+  energy = 100;
   //for the keyboard
   world;
   //for moving in otherDirection
   otherDirection = false;
 
-  isHurt(){
-    console.log("AUA");
-     }
+  hit() {
+    if (this.energy > 5) {
+      this.energy -= 5;
+    } else {
+      this.energy = 0;
+    }
+
+    console.log(this+ ": AUA", this.energy);
+  }
   //character.isColliding(chicken);
   isColliding(mo) {
     // mo-> movable Object
     return (
       this.x + this.offset.left + this.width - this.offset.right >
-        mo.x + mo.offset.left && 
+        mo.x + mo.offset.left &&
       this.y + this.offset.top + this.height - this.offset.bottom >
         mo.y + mo.offset.top &&
       this.x + this.offset.left <
@@ -36,6 +42,11 @@ class MovableObject {
       this.y + this.offset.top <
         mo.y + mo.offset.top + mo.height - mo.offset.bottom
     );
+  }
+
+  isDead() {
+    console.log("Energy: ", this.energy);
+    return this.energy == 0;
   }
 
   //for drawing

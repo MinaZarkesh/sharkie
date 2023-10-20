@@ -23,9 +23,9 @@ function startGame() {
 
 // shows Endscreen after 4 secs
 function checkEndGame() {
-  if (i > 60) {
+  if (isGameStopped) {
     // Abbruchbedingung, world.character.isDead() or world.endboss.isDead()
-    isGameStopped = true;
+    // isGameStopped = true;
     endScreen();
   } else {
     console.log("Spiel läuft");

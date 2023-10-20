@@ -32,6 +32,9 @@ class Fish extends MovableObject {
      this.loadImages(this.GREEN_DEAD);
     this.animate(); //animate
   }
+  isHurt(){
+    console.log("Fish: AUA");
+     }
 
   animate() {
     setStoppableInterval(() => {

@@ -17,8 +17,33 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
+    this.checkCollisions();
   }
 
+  checkCollisions() {
+    setStoppableInterval(() => {
+      this.checkEnemyCollisions();
+      
+    }, 500); //2mal pro sekunde
+  }
+
+  checkEnemyCollisions(){
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        if (enemy instanceof Endboss) {
+          this.character.isHurt();
+          this.character.isHurt();
+        } else {
+          if (this.character.isFinSlap) {
+            enemy.isHurt();
+          } else {
+            this.character.isHurt();
+            // enemy can not attack again for 1sec
+          }
+        }
+      }
+    });
+  }
   setWorld() {
     this.character.world = this;
   }
@@ -54,9 +79,9 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawFrame(this.ctx);
-    mo.drawRedFrame(this.ctx);
- 
+    // mo.drawFrame(this.ctx);
+    // mo.drawRedFrame(this.ctx);
+
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

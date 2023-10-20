@@ -25,9 +25,7 @@ class Character extends MovableObject {
   IMAGES_DEAD = IMAGES_DEAD;
   speed = 5;
   otherDirection = false;
- isFinSlap = false;
-
-
+  isFinSlap = false;
 
   constructor() {
     super().loadImage(IMAGES_IDLE[0]);
@@ -41,6 +39,10 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.animate(); //animate
+  }
+
+  isHurt() {
+    console.log("Character: AUA");
   }
 
   animate() {
@@ -60,9 +62,9 @@ class Character extends MovableObject {
     }, 1000 / fps);
 
     setStoppableInterval(() => {
-      if(this.world.keyboard.SPACE && this.isFinSlap){
+      if (this.world.keyboard.SPACE && this.isFinSlap) {
         this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
-      } else{
+      } else {
         if (
           this.world.keyboard.RIGHT ||
           this.world.keyboard.LEFT ||
@@ -77,7 +79,7 @@ class Character extends MovableObject {
           this.IMAGES = this.IMAGES_IDLE;
         }
       }
-   
+
       this.imageLoop(); // playAnimation
     }, 1000 / (fps / 10));
   }
@@ -101,5 +103,5 @@ class Character extends MovableObject {
     this.y += this.speed;
   }
 
-  jump() {}
+  // jump() {}
 }

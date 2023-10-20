@@ -16,7 +16,6 @@ function startGame() {
   document.getElementById("startScreen").style = "display: none";
   image = document.getElementById("gameOver").style.display = "none";
   button = document.getElementById("restart").style.display = "none";
-  i = 0;
   init();
   setStoppableInterval(checkEndGame, 1000);
 }

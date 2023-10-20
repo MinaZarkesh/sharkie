@@ -3,10 +3,10 @@ class Character extends MovableObject {
   width = 200;
   //for colliding
   offset = {
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    top: 80,
+    left: 35,
+    right: 50,
+    bottom: 120,
   };
 
   x = 100;
@@ -25,6 +25,9 @@ class Character extends MovableObject {
   IMAGES_DEAD = IMAGES_DEAD;
   speed = 5;
   otherDirection = false;
+ isFinSlap = false;
+
+
 
   constructor() {
     super().loadImage(IMAGES_IDLE[0]);
@@ -57,21 +60,24 @@ class Character extends MovableObject {
     }, 1000 / fps);
 
     setStoppableInterval(() => {
-      if (
-        this.world.keyboard.RIGHT ||
-        this.world.keyboard.LEFT ||
-        this.world.keyboard.UP ||
-        this.world.keyboard.DOWN
-      ) {
-        //walk animation
-        this.IMAGES = this.IMAGES_SWIM;
-      } else if (this.world.keyboard.D) {
-        this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
-      } else if (this.world.keyboard.SPACE) {
+      if(this.world.keyboard.SPACE && this.isFinSlap){
         this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
-      } else {
-        this.IMAGES = this.IMAGES_IDLE;
+      } else{
+        if (
+          this.world.keyboard.RIGHT ||
+          this.world.keyboard.LEFT ||
+          this.world.keyboard.UP ||
+          this.world.keyboard.DOWN
+        ) {
+          //walk animation
+          this.IMAGES = this.IMAGES_SWIM;
+        } else if (this.world.keyboard.D) {
+          this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
+        } else {
+          this.IMAGES = this.IMAGES_IDLE;
+        }
       }
+   
       this.imageLoop(); // playAnimation
     }, 1000 / (fps / 10));
   }

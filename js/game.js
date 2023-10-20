@@ -81,13 +81,13 @@ window.addEventListener("keydown", (event) => {
   if (event.keyCode == 32) {
     keyboard.SPACE = true;
     //  world.character.movement = 6; //Fin Slap
-    //  world.character.isFinSlap = true;
+    world.character.isFinSlap = true;
   }
   if (event.keyCode == 68) {
     keyboard.D = true;
     //  world.character.movement = 5; //White Bubble
   }
-   console.log("Key gedrückt: " + event.keyCode);
+  console.log("Key gedrückt: " + event.keyCode);
 });
 
 window.addEventListener("keyup", (event) => {

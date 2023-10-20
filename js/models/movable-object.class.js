@@ -19,15 +19,28 @@ class MovableObject {
   world;
   //for moving in otherDirection
   otherDirection = false;
+  lastHit;
 
   hit() {
-    if (this.energy > 5) {
-      this.energy -= 5;
-    } else {
+    this.energy -= 5;
+    if (this.energy < 0) {
       this.energy = 0;
+    } else {
+      this.lastHit = new Date().getTime();
     }
 
-    console.log(this+ ": AUA", this.energy);
+    console.log(this + ": AUA", this.energy);
+  }
+  isKilled() {
+    let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
+    timepassed = timepassed / 1000; //timepassed in sec
+    return timepassed < 1.5;
+  }
+
+  isHurt() {
+    let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
+    timepassed = timepassed / 1000; //timepassed in sec
+    return timepassed < 5;
   }
   //character.isColliding(chicken);
   isColliding(mo) {

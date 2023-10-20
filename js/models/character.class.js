@@ -60,6 +60,9 @@ class Character extends MovableObject {
     setStoppableInterval(() => {
       if (this.isDead()) {
         this.IMAGES = this.IMAGES_DEAD;
+        this.isKilled();
+      } else if (this.isHurt()) {
+        this.IMAGES = this.IMAGES_HURT;
       } else {
         if (this.world.keyboard.SPACE && this.isFinSlap) {
           this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
@@ -80,7 +83,6 @@ class Character extends MovableObject {
         }
       }
       this.imageLoop(); // playAnimation
-      
     }, 1000 / (fps / 10));
   }
 

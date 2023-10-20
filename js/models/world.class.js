@@ -22,8 +22,8 @@ class World {
 
   checkCollisions() {
     setStoppableInterval(() => {
-      if (this.character.isDead()) {
-        isGameStopped = true;
+      if (this.character.isDead() && !this.character.isKilled()) {
+         isGameStopped = true;
       } else {
         this.checkEnemyCollisions();
       }

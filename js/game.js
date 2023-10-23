@@ -1,5 +1,3 @@
-let i;
-
 let canvas;
 let world;
 let isGameStopped = false;
@@ -26,9 +24,6 @@ function checkEndGame() {
     // Abbruchbedingung, world.character.isDead() or world.endboss.isDead()
     // isGameStopped = true;
     endScreen();
-  } else {
-    console.log("Spiel läuft");
-    i++;
   }
 }
 
@@ -50,7 +45,6 @@ function restartGame() {
 }
 
 function resetGame() {
-  i = 0;
   isGameStopped=false;
 }
 
@@ -87,7 +81,7 @@ window.addEventListener("keydown", (event) => {
     keyboard.D = true;
     //  world.character.movement = 5; //White Bubble
   }
-  console.log("Key gedrückt: " + event.keyCode);
+  // console.log("Key gedrückt: " + event.keyCode);
 });
 
 window.addEventListener("keyup", (event) => {

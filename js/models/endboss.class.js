@@ -9,7 +9,6 @@ class Endboss extends MovableObject {
     right: 30,
     bottom: 170,
   };
-  
 
   hadFirstContact = false;
   y = 0;
@@ -36,24 +35,28 @@ class Endboss extends MovableObject {
     let i = 0;
     this.x = 3000;
     setStoppableInterval(() => {
-
-      if (!this.hadFirstContact && this.world.character.x >this.world.level.level_end_x - 20 && this.world.fishDead >9) {
+      if (
+        !this.hadFirstContact &&
+        this.world.character.x > this.world.level.level_end_x - 20 &&
+        this.world.fishDead > 9
+      ) {
         //wenn 10/15 Fish tot sind;
         i = 0;
         // this.x = 2700;
         this.x = 2400;
         this.hadFirstContact = true;
-        this.speed = 0.5;
+        this.speed = 5;
       }
 
       if (i < 8 && this.hadFirstContact) {
         this.moveLeft();
         this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;
         this.imageLoop();
-      } else{
+      } else {
         this.IMAGES = this.IMAGES_ENDBOSS_FLOATING;
         this.imageLoop();
       }
+      this.moveLeft();
       // this.imageLoop();
       i++;
     }, 1000 / (fps / 10));

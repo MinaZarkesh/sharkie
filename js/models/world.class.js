@@ -5,6 +5,7 @@ class World {
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
   //********/
+  fishDead = 0;
 endboss = new Endboss();
   canvas;
   ctx;
@@ -15,9 +16,11 @@ endboss = new Endboss();
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
+    this.fishDead = 0;
     this.draw();
     this.setWorld();
     this.checkCollisions();
+  
   }
 
   checkCollisions() {
@@ -50,6 +53,9 @@ endboss = new Endboss();
   setWorld() {
     this.character.world = this;
     this.endboss.world = this;
+    this.enemies.forEach((enemy)=>{
+      enemy.world = this;
+    })
     this.enemies.push(this.endboss);
   }
   draw() {
@@ -61,7 +67,6 @@ endboss = new Endboss();
     this.addObjectsToMap(this.enemies);
     //move Camera to the right
     this.ctx.translate(-this.camera_x, 0);
-
     //draw() wird immer wieder aufgerufen
     let self = this;
 

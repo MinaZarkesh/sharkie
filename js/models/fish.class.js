@@ -48,11 +48,11 @@ class Fish extends MovableObject {
     let swimInterval;
 
     swimInterval = setInterval(() => {
+
       if (this.isDead() || this.x < -720) {
         this.IMAGES = this.GREEN_DEAD;
         this.isKilled(swimInterval);
-        // this.world.fishDead ++;
-        // console.log("Fische gestorben: ", this.world.fishDead);
+         this.world.fishDead ++;
       } else if (this.isHurt()) {
         this.IMAGES = this.GREEN_TRANSITION;
         this.imageLoop();
@@ -62,14 +62,18 @@ class Fish extends MovableObject {
         this.IMAGES = this.GREEN_SWIM;
         this.imageLoop();
       }
+      
     }, 1000 / (fps / 10));
   }
 
   isKilled(interval) {
     clearInterval(interval);
     this.loadImage(this.GREEN_DEAD[2]);
-    if (this.x < -720 || this.y ) {
-      this.speed = 0;
-    }
+    // if (this.x < -720 || this.y ) {
+      // this.x = 200 + Math.random() * 2200;
+      // this.IMAGES = this.GREEN_BUBBLESWIM;
+      // this.imageLoop();
+      // this.world.fishDead++;
+    // }
   }
 }

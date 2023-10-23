@@ -51,6 +51,7 @@ function restartGame() {
 
 function resetGame() {
   i = 0;
+  isGameStopped=false;
 }
 
 function stopGame() {

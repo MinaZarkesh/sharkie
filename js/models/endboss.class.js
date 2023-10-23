@@ -9,6 +9,7 @@ class Endboss extends MovableObject {
     right: 30,
     bottom: 170,
   };
+  
 
   hadFirstContact = false;
   y = 0;
@@ -21,7 +22,7 @@ class Endboss extends MovableObject {
   IMAGES_ENDBOSS_DEAD = IMAGES_ENDBOSS_DEAD;
 
   constructor() {
-    super().loadImage(this.IMAGES_ENDBOSS_INTRODUCING[0]);
+    super().loadImage(this.IMAGES[0]);
     this.hadFirstContact = false;
     this.loadImages(this.IMAGES_ENDBOSS_FLOATING);
     this.loadImages(this.IMAGES_ENDBOSS_INTRODUCING);
@@ -35,23 +36,26 @@ class Endboss extends MovableObject {
     let i = 0;
     this.x = 3000;
     setStoppableInterval(() => {
-      if (i < 9) {
-        this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;
-      } else {
-        this.IMAGES = this.IMAGES_ENDBOSS_FLOATING;
-      }
-      this.imageLoop();
-      i++;
 
-      if (
-        !this.hadFirstContact &&
-        this.world.character.x > this.world.level.level_end_x - 100
-      ) {
+      if (!this.hadFirstContact && this.world.character.x >this.world.level.level_end_x - 20 && this.world.fishDead >9) {
         //wenn 10/15 Fish tot sind;
         i = 0;
+        // this.x = 2700;
         this.x = 2400;
         this.hadFirstContact = true;
+        this.speed = 0.5;
       }
-    }, 1000 / (fps / 6));
+
+      if (i < 8 && this.hadFirstContact) {
+        this.moveLeft();
+        this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;
+        this.imageLoop();
+      } else{
+        this.IMAGES = this.IMAGES_ENDBOSS_FLOATING;
+        this.imageLoop();
+      }
+      // this.imageLoop();
+      i++;
+    }, 1000 / (fps / 10));
   }
 }

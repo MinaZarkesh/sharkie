@@ -19,7 +19,7 @@ function initLevel() {
       new Fish(),
       new Fish(),
       new Fish(),
-      new Endboss(),
+      // new Endboss(),
     ],
     [
       new BackgroundObject("../img/3. Background/Layers/5. Water/L1.png", -720),

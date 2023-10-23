@@ -98,12 +98,7 @@ class Character extends MovableObject {
     this.otherDirection = false;
   }
 
-  moveUp() {
-    this.y -= this.speed;
-  }
-  moveDown() {
-    this.y += this.speed;
-  }
+
 
   // jump() {}
 }

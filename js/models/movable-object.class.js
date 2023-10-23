@@ -29,7 +29,7 @@ class MovableObject {
       this.lastHit = new Date().getTime();
     }
 
-    console.log(this + ": AUA", this.energy);
+    // console.log(this + ": AUA", this.energy);
   }
   isKilled() {
     let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
@@ -40,7 +40,7 @@ class MovableObject {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
     timepassed = timepassed / 1000; //timepassed in sec
-    return timepassed < 5;
+    return timepassed < 1;
   }
   //character.isColliding(chicken);
   isColliding(mo) {
@@ -58,7 +58,7 @@ class MovableObject {
   }
 
   isDead() {
-    console.log("Energy: ", this.energy);
+    // console.log("Energy: ",this, this.energy);
     return this.energy == 0;
   }
 
@@ -128,4 +128,12 @@ class MovableObject {
   moveRight() {
     this.x += this.speed;
   }
+
+  moveUp() {
+    this.y -= this.speed;
+  }
+  moveDown() {
+    this.y += this.speed;
+  }
+
 }

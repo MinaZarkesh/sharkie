@@ -108,11 +108,11 @@ function initLevel() {
       new Coin(2000, 360),
       new Coin(2100, 360),
       new Coin(2200, 360),
-      // new Bottle(200, 100),
-      // new Bottle(500, 100),
-      // new Bottle(1060, 100),
-      // new Bottle(1800, 50),
-      // new Bottle(2200, 50),
+      new Bottle(200, 100),
+      new Bottle(500, 100),
+      new Bottle(1060, 100),
+      new Bottle(1800, 50),
+      new Bottle(2200, 50),
     ],
     [
       new StatusBar(

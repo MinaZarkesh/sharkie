@@ -29,6 +29,9 @@ class Character extends MovableObject {
 
   //For StatusBars
   coinStatus = 0;
+  poison = 0;
+  bottles = []; //trowable Objects
+  lastThrow = 0;
 
   constructor() {
     super().loadImage(IMAGES_IDLE[0]);
@@ -48,6 +51,14 @@ class Character extends MovableObject {
     this.coinStatus += 100 / 15;
     if (this.coinStatus > 100) {
       this.coinStatus = 100;
+    }
+  }
+
+  collectBottle() {
+    this.poison += 100 / 5;
+    console.log("Poison: ", this.poison);
+    if (this.poison > 100) {
+      this.poison = 100;
     }
   }
 

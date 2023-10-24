@@ -46,6 +46,7 @@ class World {
         if (enemy instanceof Endboss) {
           this.character.hit();
           this.character.hit();
+          this.statusBar_Life.setPercentage(this.character.energy);
         } else {
           if (this.character.isFinSlap) {
             enemy.hit();

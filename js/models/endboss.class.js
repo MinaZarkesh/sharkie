@@ -12,7 +12,7 @@ class Endboss extends MovableObject {
 
   hadFirstContact = false;
   y = 0;
-  x = 2400;
+  x = 2500;
   IMAGES = IMAGES_ENDBOSS_FLOATING;
   IMAGES_ENDBOSS_INTRODUCING = IMAGES_ENDBOSS_INTRODUCING;
   IMAGES_ENDBOSS_FLOATING = IMAGES_ENDBOSS_FLOATING;
@@ -43,7 +43,7 @@ class Endboss extends MovableObject {
         //wenn 10/15 Fish tot sind;
         i = 0;
         // this.x = 2700;
-        this.x = 2400;
+        this.x = 2500;
         this.hadFirstContact = true;
         this.speed = 5;
       }

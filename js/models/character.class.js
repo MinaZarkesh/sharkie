@@ -43,16 +43,16 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
-      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.isFinSlap) {
         this.moveRight();
       }
-      if (this.world.keyboard.LEFT && this.x > this.world.level.level_start_x) {
+      if (this.world.keyboard.LEFT && this.x > this.world.level.level_start_x && !this.isFinSlap) {
         this.moveLeft();
       }
-      if (this.world.keyboard.UP && this.y > this.world.level.level_start_y) {
+      if (this.world.keyboard.UP && this.y > this.world.level.level_start_y && !this.isFinSlap) {
         this.moveUp();
       }
-      if (this.world.keyboard.DOWN && this.y < this.world.level.level_end_y) {
+      if (this.world.keyboard.DOWN && this.y < this.world.level.level_end_y && !this.isFinSlap) {
         this.moveDown();
       }
     }, 1000 / fps);

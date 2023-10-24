@@ -10,16 +10,16 @@ class ThrowableObject extends MovableObject {
   }
 
   throw(world) {
-    //     world.addObjectsToMap(world.bottles);
-    //     world.addToMap(this);
-    //      this.x = world.character.x+100 ;
-    //      this.y = world.character.y+100;
-    //     this.speedY = 30;
-    //     this.applyGravity();
-    //     setInterval(()  => {
-    //  this.checkBottleOnGround();
-    //       this.x += 150;
-    //     }, 2000);
+        world.addObjectsToMap(world.character.bottles);
+        world.addToMap(this);
+         this.x = world.character.x+100 ;
+         this.y = world.character.y+100;
+        this.speedY = 30;
+        this.applyGravity();
+        setInterval(()  => {
+     this.checkBottleOnGround();
+          this.x += 150;
+        }, 2000);
   }
 
   checkBottleOnGround() {

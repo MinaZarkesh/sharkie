@@ -107,6 +107,8 @@ class World {
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.level.collectableObjects); //bottles and Coins
+    this.addObjectsToMap(this.character.bottles); //collected throwable Objects //at start empty
+
     //drawFixedObjects
     this.ctx.translate(-this.camera_x, 0); // Back
     //fixed Objects

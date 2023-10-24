@@ -8,8 +8,9 @@ class MovableObject extends DrawableObject{
   //for moving in otherDirection
   otherDirection = false;
   
-  //for isHurt
+  //for isHurt and isKilled
   lastHit;
+  lastThrow;
 
   hit() {
     this.energy -= 5;
@@ -25,6 +26,12 @@ class MovableObject extends DrawableObject{
     let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
     timepassed = timepassed / 1000; //timepassed in sec
     return timepassed < 1.5;
+  }
+
+  thrownBottle(){
+    let timepassed = new Date().getTime() - this.lastThrow; // Diefference in ms
+    timepassed = timepassed / 1000; //timepassed in sec
+    return timepassed < 1;
   }
 
   isHurt() {

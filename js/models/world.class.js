@@ -79,9 +79,10 @@ class World {
           this.character.poison = this.character.bottles.length * 20;
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
-        } else if (co instanceof Chicken && this.character.isfinSlap) {
-          co.isHurt();
-        }
+        } 
+        //else if (co instanceof Chicken && this.character.isfinSlap) {
+        //   co.isHurt();
+        // }
       }
     });
   }

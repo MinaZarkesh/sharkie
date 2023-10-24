@@ -8,9 +8,11 @@ class Level {
 //for constructor
   enemies;
   backgroundobjects;
+  statusbars;
 
-  constructor(enemies, backgroundobjects) {
+  constructor(enemies, backgroundobjects, statusbars) {
     this.enemies = enemies;
     this.backgroundobjects = backgroundobjects;
+    this.statusbars = statusbars;
   }
 }

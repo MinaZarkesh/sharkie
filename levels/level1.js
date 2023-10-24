@@ -89,6 +89,44 @@ function initLevel() {
         "./img/3. Background/Layers/1. Light/1.png",
         720 * 3
       ),
+    ],
+    [
+      new StatusBar(
+        [
+          "./img/4. Marcadores/green/Coin/100_ copia 4.png",
+          "./img/4. Marcadores/green/Coin/80_  copia 4.png",
+          "./img/4. Marcadores/green/Coin/60_  copia 4.png",
+          "./img/4. Marcadores/green/Coin/40_  copia 4.png",
+          "./img/4. Marcadores/green/Coin/20_  copia 2.png",
+          "./img/4. Marcadores/green/Coin/0_  copia 4.png",
+        ],
+        80,
+        0
+      ),
+      new StatusBar(
+        [
+          "./img/4. Marcadores/green/Life/100_  copia 2.png",
+          "./img/4. Marcadores/green/Life/80_  copia 3.png",
+          "./img/4. Marcadores/green/Life/60_  copia 3.png",
+          "./img/4. Marcadores/green/Life/40_  copia 3.png",
+          "./img/4. Marcadores/green/Life/20_ copia 4.png",
+          "./img/4. Marcadores/green/Life/0_  copia 3.png",
+        ],
+        45,
+        100
+      ),
+      new StatusBar(
+        [
+          "./img/4. Marcadores/green/poisoned bubbles/100_ copia 3.png",
+          "./img/4. Marcadores/green/poisoned bubbles/80_ copia 2.png",
+          "./img/4. Marcadores/green/poisoned bubbles/60_ copia 2.png",
+          "./img/4. Marcadores/green/poisoned bubbles/40_ copia 2.png",
+          "./img/4. Marcadores/green/poisoned bubbles/20_ copia 3.png",
+          "./img/4. Marcadores/green/poisoned bubbles/0_ copia 2.png",
+        ],
+        10,
+        0
+      ),
     ]
   );
 }

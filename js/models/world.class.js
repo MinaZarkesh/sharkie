@@ -12,6 +12,11 @@ endboss = new Endboss();
   keyboard;
   camera_x = 0;
 
+  //StatusBars
+  statusBar_Coin = this.level.statusbars[0];
+  statusBar_Life = this.level.statusbars[1];
+  statusBar_Poison = this.level.statusbars[2];
+
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -69,9 +74,19 @@ endboss = new Endboss();
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     //move Camera to the left
     this.ctx.translate(this.camera_x, 0);
+
     this.addObjectsToMap(this.backgroundObjects);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
+
+    //drawFixedObjects
+    this.ctx.translate(-this.camera_x, 0); // Back
+    //fixed Objects
+    this.addToMap(this.statusBar_Coin);
+    this.addToMap(this.statusBar_Life);
+    this.addToMap(this.statusBar_Poison);
+    this.ctx.translate(this.camera_x, 0); // Forwards
+
     //move Camera to the right
     this.ctx.translate(-this.camera_x, 0);
     //draw() wird immer wieder aufgerufen

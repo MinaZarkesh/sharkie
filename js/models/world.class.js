@@ -1,22 +1,23 @@
 class World {
   character = new Character();
+  endboss = new Endboss();
   //level-Objects
   level = level1;
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
+  collectableObjects = this.level.collectableObjects;
+ //StatusBars
+ statusBar_Coin = this.level.statusbars[0];
+ statusBar_Life = this.level.statusbars[1];
+ statusBar_Poison = this.level.statusbars[2];
   //********/
   fishDead = 0;
-endboss = new Endboss();
   canvas;
   ctx;
   keyboard;
   camera_x = 0;
 
-  //StatusBars
-  statusBar_Coin = this.level.statusbars[0];
-  statusBar_Life = this.level.statusbars[1];
-  statusBar_Poison = this.level.statusbars[2];
-
+ 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -34,6 +35,7 @@ endboss = new Endboss();
          isGameStopped = true;
       } else {
         this.checkEnemyCollisions();
+        this.checkCollisionsCO();
       }
     }, 500); //2mal pro sekunde
   }
@@ -49,6 +51,7 @@ endboss = new Endboss();
             enemy.hit();
           } else {
             this.character.hit();
+            this.statusBar_Life.setPercentage(this.character.energy);
             // enemy can not attack again for 1sec
           }
         }
@@ -56,8 +59,31 @@ endboss = new Endboss();
     });
   }
 
-
-
+  //check if Character is Collinding a Collactable Object, if it`s a throwable Object, it moves to "Bottles"-Array
+  checkCollisionsCO() {
+    this.collectableObjects.forEach((co) => {
+      //co => collectable Object
+      if (this.character.isColliding(co)) {
+        if (co instanceof Coin) {
+          this.character.collectCoin();
+          this.statusBar_Coin.setPercentage(this.character.coinStatus);
+          co.disappear(this.collectableObjects);
+        } else if (co instanceof Bottle) {
+          //set new Position, so it cant be seen
+          co.x = -100;
+          co.y = 500;
+          //push Bottle in Array bottles, so you can see which
+          this.character.bottles.push(co);
+          this.character.collectBottle();
+          this.character.poison = this.character.bottles.length * 20;
+          this.statusBar_Poison.setPercentage(this.character.poison);
+          co.disappear(this.collectableObjects);
+        } else if (co instanceof Chicken && this.character.isfinSlap) {
+          co.isHurt();
+        }
+      }
+    });
+  }
   
   setWorld() {
     this.character.world = this;
@@ -78,7 +104,7 @@ endboss = new Endboss();
     this.addObjectsToMap(this.backgroundObjects);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
-
+    this.addObjectsToMap(this.level.collectableObjects); //bottles and Coins
     //drawFixedObjects
     this.ctx.translate(-this.camera_x, 0); // Back
     //fixed Objects

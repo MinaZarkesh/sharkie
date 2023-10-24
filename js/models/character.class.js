@@ -27,6 +27,9 @@ class Character extends MovableObject {
   otherDirection = false;
   isFinSlap = false;
 
+  //For StatusBars
+  coinStatus = 0;
+
   constructor() {
     super().loadImage(IMAGES_IDLE[0]);
     //for animation
@@ -39,6 +42,13 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.animate(); //animate
+  }
+
+  collectCoin() {
+    this.coinStatus += 100 / 15;
+    if (this.coinStatus > 100) {
+      this.coinStatus = 100;
+    }
   }
 
   animate() {
@@ -97,8 +107,4 @@ class Character extends MovableObject {
     this.world.camera_x = -this.x + 100;
     this.otherDirection = false;
   }
-
-
-
-  // jump() {}
 }

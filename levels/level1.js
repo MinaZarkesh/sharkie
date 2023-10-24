@@ -91,6 +91,30 @@ function initLevel() {
       ),
     ],
     [
+      // 15 Coins //5 Flaschen
+      //x,y Position
+      new Coin(700, 360),
+      new Coin(300, 160),
+      new Coin(500, 40),
+      new Coin(90, 340),
+      new Coin(920, 140),
+      new Coin(980, 100),
+      new Coin(1060, 80),
+      new Coin(1140, 100),
+      new Coin(1200, 140),
+      new Coin(1500, 100),
+      new Coin(1500, 160),
+      new Coin(1500, 220),
+      new Coin(2000, 360),
+      new Coin(2100, 360),
+      new Coin(2200, 360),
+      // new Bottle(200, 100),
+      // new Bottle(500, 100),
+      // new Bottle(1060, 100),
+      // new Bottle(1800, 50),
+      // new Bottle(2200, 50),
+    ],
+    [
       new StatusBar(
         [
           "./img/4. Marcadores/green/Coin/100_ copia 4.png",

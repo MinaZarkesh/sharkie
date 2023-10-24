@@ -2,6 +2,7 @@ let canvas;
 let world;
 let isGameStopped = false;
 let keyboard = new Keyboard();
+
 function init() {
   canvas = document.getElementById("canvas");
   initLevel();
@@ -22,7 +23,6 @@ function startGame() {
 function checkEndGame() {
   if (isGameStopped) {
     // Abbruchbedingung, world.character.isDead() or world.endboss.isDead()
-    // isGameStopped = true;
     endScreen();
   }
 }
@@ -38,7 +38,6 @@ function restartGame() {
   console.log("Game-Over");
   document.getElementById("startScreen").style = "display: flex";
   document.getElementById("game").classList.add("d-none");
-  // document.getElementById("startScreen").style = "display: none";
   image = document.getElementById("gameOver").style.display = "flex";
   button = document.getElementById("restart").style.display = "flex";
   resetGame();
@@ -58,30 +57,23 @@ function stopGame() {
 window.addEventListener("keydown", (event) => {
   if (event.keyCode == 39) {
     keyboard.RIGHT = true;
-    //  world.character.movement = 1;
   }
   if (event.keyCode == 37) {
     keyboard.LEFT = true;
-    //  world.character.movement = 1;
   }
   if (event.keyCode == 38) {
     keyboard.UP = true;
-    //  world.character.movement = 1;
   }
   if (event.keyCode == 40) {
     keyboard.DOWN = true;
-    //  world.character.movement = 1;
   }
   if (event.keyCode == 32) {
     keyboard.SPACE = true;
-    //  world.character.movement = 6; //Fin Slap
     world.character.isFinSlap = true;
   }
   if (event.keyCode == 68) {
     keyboard.D = true;
-    //  world.character.movement = 5; //White Bubble
   }
-  // console.log("Key gedrückt: " + event.keyCode);
 });
 
 window.addEventListener("keyup", (event) => {
@@ -104,5 +96,4 @@ window.addEventListener("keyup", (event) => {
   if (event.keyCode == 68) {
     keyboard.D = false;
   }
-  //  world.character.movement = 0;
 });

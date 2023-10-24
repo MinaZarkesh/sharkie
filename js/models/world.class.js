@@ -50,6 +50,10 @@ endboss = new Endboss();
       }
     });
   }
+
+
+
+  
   setWorld() {
     this.character.world = this;
     this.endboss.world = this;
@@ -58,6 +62,9 @@ endboss = new Endboss();
     })
     this.enemies.push(this.endboss);
   }
+
+
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     //move Camera to the left

@@ -96,8 +96,6 @@ class World {
     this.enemies.push(this.endboss);
   }
 
-
-
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     //move Camera to the left

@@ -2,15 +2,15 @@ class MovableObject extends DrawableObject{
 
   //isDead bei energy = 0;
   energy = 100;
-
+posion = 100;
   //for the keyboard
   world;
   //for moving in otherDirection
   otherDirection = false;
   
   //for isHurt and isKilled
-  lastHit;
-  lastThrow;
+  lastHit=0;
+  lastThrow=0;
 
   hit() {
     this.energy -= 5;
@@ -28,7 +28,16 @@ class MovableObject extends DrawableObject{
     return timepassed < 1.5;
   }
 
-  thrownBottle(){
+  throw(){
+    this.poison -= 5;
+    if (this.poison < 0) {
+      this.posion = 0;
+    } else {
+      this.lastThrow = new Date().getTime();
+    }
+  }
+
+  isThrown(){
     let timepassed = new Date().getTime() - this.lastThrow; // Diefference in ms
     timepassed = timepassed / 1000; //timepassed in sec
     return timepassed < 1;

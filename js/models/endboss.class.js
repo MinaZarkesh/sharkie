@@ -35,6 +35,15 @@ class Endboss extends MovableObject {
     let i = 0;
     this.x = 3000;
     setStoppableInterval(() => {
+      if (i < 8 && this.hadFirstContact) {
+        this.moveLeft();
+        this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;
+        this.imageLoop();
+      } else {
+        this.IMAGES = this.IMAGES_ENDBOSS_FLOATING;
+        this.imageLoop();
+      }
+      
       if (
         !this.hadFirstContact &&
         this.world.character.x > this.world.level.level_end_x - 20 &&
@@ -46,15 +55,6 @@ class Endboss extends MovableObject {
         this.x = 2500;
         this.hadFirstContact = true;
         this.speed = 5;
-      }
-
-      if (i < 8 && this.hadFirstContact) {
-        this.moveLeft();
-        this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;
-        this.imageLoop();
-      } else {
-        this.IMAGES = this.IMAGES_ENDBOSS_FLOATING;
-        this.imageLoop();
       }
       this.moveLeft();
       // this.imageLoop();

@@ -6,6 +6,7 @@ class World {
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
   collectableObjects = this.level.collectableObjects;
+   throwableObjects = [new Bubble()];
  //StatusBars
  statusBar_Coin = this.level.statusbars[0];
  statusBar_Life = this.level.statusbars[1];
@@ -16,7 +17,7 @@ class World {
   ctx;
   keyboard;
   camera_x = 0;
-
+  isGreen=false;
  
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -74,9 +75,9 @@ class World {
           co.x = -100;
           co.y = 500;
           //push Bottle in Array bottles, so you can see which
-          this.character.bottles.push(co);
+          // this.character.bottles.push(co);
           this.character.collectBottle();
-          this.character.poison = this.character.bottles.length * 20;
+          // this.character.poison = this.character.bottles.length * 20;
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
         } 
@@ -102,10 +103,12 @@ class World {
     this.ctx.translate(this.camera_x, 0);
 
     this.addObjectsToMap(this.backgroundObjects);
+     this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.level.collectableObjects); //bottles and Coins
-    this.addObjectsToMap(this.character.bottles); //collected throwable Objects //at start empty
+   
+    // this.addObjectsToMap(this.character.bottles); //collected throwable Objects //at start empty
 
     //drawFixedObjects
     this.ctx.translate(-this.camera_x, 0); // Back

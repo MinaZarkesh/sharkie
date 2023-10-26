@@ -209,6 +209,11 @@ IMAGES_SWIMMING_BOTTLE = [
   "./img/4. Marcadores/Posión/Animada/3.png",
   "./img/4. Marcadores/Posión/Animada/4.png",
 ];
+/********** Bubbles **********/
+IMAGES_BUBBLE_GREEN = [
+  "./img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png",
+];
+IMAGES_BUBBLE_WHITE = ["./img/1.Sharkie/4.Attack/Bubble trap/Bubble.png", ];
 
 /************ Status-Bars ****************/
 
@@ -237,6 +242,3 @@ IMAGES_STATUSBAR_POISON = [
   "./img/4. Marcadores/green/poisoned bubbles/80_ copia 2.png",
   "./img/4. Marcadores/green/poisoned bubbles/100_ copia 3.png",
 ];
-
-
-

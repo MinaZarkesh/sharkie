@@ -30,7 +30,7 @@ class ThrowableObject extends MovableObject {
     this.x = x + 155;
     this.y = y + 115;
 
-    // setInterval(() => {
+    setInterval(() => {
       if (this.width < 50) {
         this.width += 10;
         this.height += 10;
@@ -41,7 +41,7 @@ class ThrowableObject extends MovableObject {
       this.x += this.speedX;
 
       // this.checkBottleOnGround();
-    // }, 1000 / (fps/10));
+    }, 1000 / (fps/10));
   }
 
   checkBottleOnGround() {

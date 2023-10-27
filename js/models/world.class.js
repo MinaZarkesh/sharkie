@@ -6,19 +6,19 @@ class World {
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
   collectableObjects = this.level.collectableObjects;
-   throwableObjects = [new Bubble()];
- //StatusBars
- statusBar_Coin = this.level.statusbars[0];
- statusBar_Life = this.level.statusbars[1];
- statusBar_Poison = this.level.statusbars[2];
+  throwableObjects = [new Bubble()];
+  //StatusBars
+  statusBar_Coin = this.level.statusbars[0];
+  statusBar_Life = this.level.statusbars[1];
+  statusBar_Poison = this.level.statusbars[2];
   //********/
   fishDead = 0;
   canvas;
   ctx;
   keyboard;
   camera_x = 0;
-  isGreen=false;
- 
+  isGreen = false;
+
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -27,18 +27,31 @@ class World {
     this.draw();
     this.setWorld();
     this.checkCollisions();
-  
   }
 
   checkCollisions() {
     setStoppableInterval(() => {
-      if (this.character.isDead() && !this.character.isKilled()) {
-         isGameStopped = true;
+      if ((this.character.isDead() && !this.character.isKilled()) || (this.endboss.isDead() && !this.endboss.isKilled())) {
+        if(this.character.isDead() && !this.character.isKilled()){
+document.getElementById("gameOver").src = "./img/6.Botones/Tittles/Game Over/Recurso 12.png";
+        }else{
+          document.getElementById("gameOver").src = "./img/6.Botones/Tittles/You win/Recurso 21.png";
+        }
+        isGameStopped = true;
       } else {
         this.checkEnemyCollisions();
         this.checkCollisionsCO();
+        this.checkBubbleEndbossCollision();
       }
     }, 500); //2mal pro sekunde
+  }
+
+  checkBubbleEndbossCollision() {
+    this.throwableObjects.forEach((bubble) => {
+      if (this.endboss.isColliding(bubble)) {
+        this.endboss.hit();
+      }
+    });
   }
 
   checkEnemyCollisions() {
@@ -80,20 +93,20 @@ class World {
           // this.character.poison = this.character.bottles.length * 20;
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
-        } 
+        }
         //else if (co instanceof Chicken && this.character.isfinSlap) {
         //   co.isHurt();
         // }
       }
     });
   }
-  
+
   setWorld() {
     this.character.world = this;
     this.endboss.world = this;
-    this.enemies.forEach((enemy)=>{
+    this.enemies.forEach((enemy) => {
       enemy.world = this;
-    })
+    });
     this.enemies.push(this.endboss);
   }
 
@@ -103,11 +116,11 @@ class World {
     this.ctx.translate(this.camera_x, 0);
 
     this.addObjectsToMap(this.backgroundObjects);
-     this.addObjectsToMap(this.throwableObjects);
+    this.addObjectsToMap(this.throwableObjects);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.level.collectableObjects); //bottles and Coins
-   
+
     // this.addObjectsToMap(this.character.bottles); //collected throwable Objects //at start empty
 
     //drawFixedObjects

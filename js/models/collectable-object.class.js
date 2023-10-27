@@ -17,4 +17,5 @@ class CollectableObject extends MovableObject {
    this.index = co.indexOf(this);
  co.splice(this.index,1); //delete this Collectable Object from Array
  }
+ 
 }

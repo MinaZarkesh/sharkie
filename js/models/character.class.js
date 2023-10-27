@@ -127,26 +127,16 @@ class Character extends MovableObject {
       } else if (this.isHurt()) {
         this.IMAGES = this.IMAGES_HURT;
       } else if (this.world.keyboard.D) {
+        if (this.world.endboss.hadFirstContact && this.poison > 0) {
           this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
-          // this.hasblown = false;
-          // this.IMAGES = IMAGES_ATTACK_WHITE_BUBBLE;
-          // this.hasblown = true;
-        
-        // if (this.world.endboss.hadFirstContact && this.poison > 0) {
-        // this.IMAGES = IMAGES_ATTACK_GREEN_BUBBLE;
-        //   console.log("ATTACKE");
-        // } else {
-        //   this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
-        // }
+          console.log("ATTACKE");
+        } else {
+          this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
+        }
       } else if (this.world.keyboard.SPACE && this.isFinSlap) {
         this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
       } else {
-        if (
-          this.world.keyboard.RIGHT ||
-          this.world.keyboard.LEFT ||
-          this.world.keyboard.UP ||
-          this.world.keyboard.DOWN
-        ) {
+        if (this.isSwimming()) {
           //walk animation
           this.IMAGES = this.IMAGES_SWIM;
         } else {
@@ -157,6 +147,14 @@ class Character extends MovableObject {
     }, 1000 / (fps / 10));
   }
 
+  isSwimming() {
+    return (
+      this.world.keyboard.RIGHT ||
+      this.world.keyboard.LEFT ||
+      this.world.keyboard.UP ||
+      this.world.keyboard.DOWN
+    );
+  }
   moveLeft() {
     this.x -= this.speed;
     this.world.camera_x = -this.x + 100;

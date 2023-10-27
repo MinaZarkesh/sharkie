@@ -3,6 +3,7 @@ class DrawableObject {
   imageCache = {}; //for animation, Bilderabfolge
 
   //for imageLoop
+  oldAnimationPath ="";
   currentImage = 0;
   x = 250;
   y = 250;
@@ -69,6 +70,12 @@ class DrawableObject {
 
   //ImageLoop
   imageLoop() {
+    if (
+      (this.oldAnimationPath == "" || this.oldAnimationPath != this.IMAGES[0])
+    ) {
+      this.currentImage = 0;
+      this.oldAnimationPath = this.IMAGES[0];
+    }
     let i = this.currentImage % this.IMAGES.length; // let i = 0-17
     let path = this.IMAGES[i];
     this.img = this.imageCache[path];

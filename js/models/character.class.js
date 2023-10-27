@@ -76,27 +76,14 @@ class Character extends MovableObject {
 
   throwBubble() {
     this.bubble = this.world.throwableObjects[0];
-    if (!this.isThrown()) {
+    if (!this.isThrown() && this.world.isGreen) {
       this.bubble.throw(this.x, this.y);
       this.lastThrow = new Date().getTime();
       this.world.isGreen = false;
     } else {
       this.world.isGreen = true;
     }
-    console.log(this.world.isGreen);
   }
-
-  // throwBottle() {
-  //   // this.bottles.splice(0, 1);
-  //   this.poison -= 5;
-  //   // this.poison = this.bottles.length * 10;
-  //   console.log("Poison: ", this.poison);
-  //   if (this.poison < 0) {
-  //     this.poison = 0;
-  //   } else {
-  //     this.lastThrow = new Date().getTime();
-  //   }
-  // }
 
   animate() {
     setInterval(() => {
@@ -128,7 +115,7 @@ class Character extends MovableObject {
       ) {
         this.moveDown();
       }
-      if (this.world.keyboard.D && this.hasblown) {
+      if (this.world.keyboard.D) {
         this.throwBubble();
       }
     }, 1000 / fps);
@@ -140,18 +127,11 @@ class Character extends MovableObject {
       } else if (this.isHurt()) {
         this.IMAGES = this.IMAGES_HURT;
       } else if (this.world.keyboard.D) {
-        let i = 0;
-        if (i < 8 && this.hasblown) {
-          this.IMAGES = IMAGES_ATTACK_GREEN_BUBBLE;
-          this.imageLoop();
-          i++;
-          this.hasblown = false;
-        } else {
-          this.IMAGES = IMAGES_ATTACK_WHITE_BUBBLE;
-          this.imageLoop();
-          this.throwBubble();
-          this.hasblown = true;
-        }
+          this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
+          // this.hasblown = false;
+          // this.IMAGES = IMAGES_ATTACK_WHITE_BUBBLE;
+          // this.hasblown = true;
+        
         // if (this.world.endboss.hadFirstContact && this.poison > 0) {
         // this.IMAGES = IMAGES_ATTACK_GREEN_BUBBLE;
         //   console.log("ATTACKE");

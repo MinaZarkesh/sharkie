@@ -19,9 +19,8 @@ posion = 100;
     } else {
       this.lastHit = new Date().getTime();
     }
-
-    // console.log(this + ": AUA", this.energy);
   }
+  
   isKilled() {
     let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
     timepassed = timepassed / 1000; //timepassed in sec
@@ -64,7 +63,6 @@ posion = 100;
   }
 
   isDead() {
-    // console.log("Energy: ",this, this.energy);
     return this.energy == 0;
   }
 

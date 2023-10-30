@@ -65,8 +65,6 @@ class Endboss extends MovableObject {
         this.hadFirstContact = true;
         this.speed = 5;
       }
-      // this.moveLeft();
-      // this.imageLoop();
       i++;
     }, 1000 / (fps / 10));
   }

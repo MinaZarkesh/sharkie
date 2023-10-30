@@ -69,11 +69,5 @@ class Fish extends MovableObject {
   isKilled(interval) {
     clearInterval(interval);
     this.loadImage(this.GREEN_DEAD[2]);
-    // if (this.x < -720 || this.y ) {
-      // this.x = 200 + Math.random() * 2200;
-      // this.IMAGES = this.GREEN_BUBBLESWIM;
-      // this.imageLoop();
-      // this.world.fishDead++;
-    // }
   }
 }

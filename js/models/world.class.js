@@ -87,16 +87,10 @@ document.getElementById("gameOver").src = "./img/6.Botones/Tittles/Game Over/Rec
           //set new Position, so it cant be seen
           co.x = -100;
           co.y = 500;
-          //push Bottle in Array bottles, so you can see which
-          // this.character.bottles.push(co);
           this.character.collectBottle();
-          // this.character.poison = this.character.bottles.length * 20;
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
         }
-        //else if (co instanceof Chicken && this.character.isfinSlap) {
-        //   co.isHurt();
-        // }
       }
     });
   }

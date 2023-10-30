@@ -4,8 +4,6 @@ class ThrowableObject extends MovableObject {
   speedX = 0.2;
   constructor() {
     super().loadImage("./img/4. Marcadores/Posión/Light - Left.png");
-    // this.x = x;
-    // this.y = y;
     this.width = 0;
     this.height = 0;
     this.x = 100;
@@ -39,15 +37,12 @@ class ThrowableObject extends MovableObject {
       }
       this.speedX = 5;
       this.x += this.speedX;
-
-      // this.checkBottleOnGround();
     }, 1000 / (fps/10));
   }
 
   checkBottleOnGround() {
     if (this.y > this.ground) {
       console.log("Flasche weggeschmissen! ");
-      // this.world.bottles.splice(0, 1);
     }
   }
 }

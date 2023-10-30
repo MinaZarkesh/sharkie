@@ -47,18 +47,6 @@ class Character extends MovableObject {
     this.animate(); //animate
   }
 
-  // isAttacking() {
-  //   this.poison = this.bottles.length * 10;
-
-  //     this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
-  //     // this.throwBottle();
-  //   // } else {
-  //   //   console.log("Flaschen leer!");
-  //   //   this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
-  //   // }
-  //   this.world.statusBar_Poison.setPercentage(this.poison);
-  // }
-
   collectCoin() {
     this.coinStatus += 100 / 15;
     if (this.coinStatus > 100) {

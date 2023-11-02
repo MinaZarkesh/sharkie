@@ -37,7 +37,7 @@ class ThrowableObject extends MovableObject {
       }
       this.speedX = 5;
       this.x += this.speedX;
-    }, 1000 / (fps/10));
+    }, 1000 / (fps / 10));
   }
 
   checkBottleOnGround() {

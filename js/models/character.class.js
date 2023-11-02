@@ -30,6 +30,8 @@ class Character extends MovableObject {
   //For StatusBars
   coinStatus = 0;
   poison = 0;
+  shootImg = 0;
+
   bubble;
   // thrownBottle = false;
   hasblown = false;
@@ -63,7 +65,7 @@ class Character extends MovableObject {
   }
 
   throwBubble() {
-    this.bubble = this.world.throwableObjects[0];
+    // this.bubble = this.world.throwableObjects[0];
     if (!this.isThrown() && this.world.isGreen) {
       this.bubble.throw(this.x, this.y);
       this.lastThrow = new Date().getTime();
@@ -104,6 +106,7 @@ class Character extends MovableObject {
         this.moveDown();
       }
       if (this.world.keyboard.D) {
+        //  this.bubbleAttack();
         this.throwBubble();
       }
     }, 1000 / fps);
@@ -117,6 +120,7 @@ class Character extends MovableObject {
       } else if (this.world.keyboard.D) {
         if (this.world.endboss.hadFirstContact && this.poison > 0) {
           this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
+          // bubbleAttack();dd
           console.log("ATTACKE");
         } else {
           this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
@@ -143,6 +147,18 @@ class Character extends MovableObject {
       this.world.keyboard.DOWN
     );
   }
+
+  bubbleAttack() {
+    if (this.shootImg < 8) {
+      this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
+      this.imageLoop();
+      this.shootImg++;
+      //bubble erstellen
+    } else {
+      this.shootImg = 0;
+    }
+  }
+
   moveLeft() {
     this.x -= this.speed;
     this.world.camera_x = -this.x + 100;

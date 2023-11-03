@@ -65,14 +65,14 @@ class Character extends MovableObject {
   }
 
   throwBubble() {
-    // this.bubble = this.world.throwableObjects[0];
-    if (!this.isThrown() && this.world.isGreen) {
-      this.bubble.throw(this.x, this.y);
-      this.lastThrow = new Date().getTime();
-      this.world.isGreen = false;
-    } else {
-      this.world.isGreen = true;
-    }
+    this.bubble = this.world.throwableObjects[0];
+    // if (!this.isThrown() && this.world.isGreen) {
+    this.bubble.throw(this.x, this.y);
+    this.lastThrow = new Date().getTime();
+    //   this.world.isGreen = false;
+    // } else {
+    //   this.world.isGreen = true;
+    // }
   }
 
   animate() {
@@ -106,8 +106,8 @@ class Character extends MovableObject {
         this.moveDown();
       }
       if (this.world.keyboard.D) {
-        //  this.bubbleAttack();
-        this.throwBubble();
+        // this.bubbleAttack();
+        // this.throwBubble();
       }
     }, 1000 / fps);
 
@@ -120,11 +120,11 @@ class Character extends MovableObject {
       } else if (this.world.keyboard.D) {
         if (this.world.endboss.hadFirstContact && this.poison > 0) {
           this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
-          // bubbleAttack();dd
           console.log("ATTACKE");
         } else {
           this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
         }
+        this.bubbleAttack();
       } else if (this.world.keyboard.SPACE && this.isFinSlap) {
         this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
       } else {
@@ -149,14 +149,17 @@ class Character extends MovableObject {
   }
 
   bubbleAttack() {
-    if (this.shootImg < 8) {
-      this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
+    // if(this.world.endboss.hadFirstContact && this.poison > 0){
+    // this.IMAGES=this.IMAGES_ATTACK_GREEN_BUBBLE;
+    if (this.shootImg < IMAGES_ATTACK_GREEN_BUBBLE.length) {
       this.imageLoop();
       this.shootImg++;
       //bubble erstellen
     } else {
+      this.throwBubble();
       this.shootImg = 0;
     }
+    // }
   }
 
   moveLeft() {

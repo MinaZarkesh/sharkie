@@ -46,7 +46,7 @@
       </div>
     </div>
     <div id="game" class="game d-none">
-      <div class="mobile-overview">
+      <div class="d-none" id="mobile-overview">
         <div id="mobile-btns">
           <div class="Btns-LeftSide">
             <div>
@@ -67,7 +67,7 @@
         </div>
       </div>
       <!-- <h1>Sharkie</h1> -->
-      <canvas id="canvas" width="720" , height="480"></canvas>
+      <canvas id="canvas" class="d-none" width="720" , height="480"></canvas>
       <img
         id="gameOver"
         class="d-none"
@@ -75,9 +75,7 @@
         alt="Game over"
       />
       <div class="restartBtn d-none" id="restart">
-        <button onclick="restartGame()" >
-          RESTART
-        </button>
+        <button  onclick="restartGame()">RESTART</button>
       </div>
     </div>
   </body>

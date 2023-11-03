@@ -13,9 +13,11 @@ function init() {
 
 function startGame() {
   document.getElementById("game").classList.remove("d-none");
-  document.getElementById("startScreen").style = "display: none";
-  image = document.getElementById("gameOver").style.display = "none";
-  button = document.getElementById("restart").style.display = "none";
+  document.getElementById("canvas").classList.remove("d-none");
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("mobile-overview").style = "display: flex";
+  document.getElementById("gameOver").style = "display: none";
+  document.getElementById("restart").style = "display: none";
   init();
   setStoppableInterval(checkEndGame, 1000);
 }
@@ -29,23 +31,23 @@ function checkEndGame() {
 }
 
 function endScreen() {
-  console.log("Game-Over");
-  let image = (document.getElementById("gameOver").style.display = "flex");
-  let button = (document.getElementById("restart").style.display = "flex");
+  document.getElementById("gameOver").style = "display: flex";
+  document.getElementById("restart").style = "display: flex";
   stopGame();
 }
 
 function restartGame() {
-  console.log("Game-Over");
-  document.getElementById("startScreen").style = "display: flex";
   document.getElementById("game").classList.add("d-none");
-  image = document.getElementById("gameOver").style.display = "flex";
-  button = document.getElementById("restart").style.display = "flex";
+  document.getElementById("canvas").classList.add("d-none");
+  document.getElementById("startScreen").style.display = "flex";
+  document.getElementById("gameOver").style = "display: none";
+  document.getElementById("restart").style = "display: none";
+  document.getElementById("mobile-overview").style = "display: none";
   resetGame();
 }
 
 function resetGame() {
-  isGameStopped=false;
+  isGameStopped = false;
 }
 
 function stopGame() {
@@ -54,6 +56,4 @@ function stopGame() {
   });
 }
 
-function showMobileButtons(){
-
-}
+// function showMobileButtons() {}

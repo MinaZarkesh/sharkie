@@ -25,9 +25,12 @@ button {
   background-color: transparent;
   justify-content: center;
 }
+.gameDisplay {
+  display: flex;
+}
 
 .restartBtn {
-  display: flex;
+  /* display: flex; */
   width: 100vw;
   max-width: 720px;
   /* flex-direction: column; */
@@ -36,7 +39,7 @@ button {
 }
 #restart {
   position: absolute;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -60,7 +63,7 @@ canvas {
   background-color: black;
 }
 
-.mobile-overview {
+#mobile-overview {
   /* height: 100vh; */
   /* background-color: blue; */
   /* display: flex; */
@@ -118,13 +121,13 @@ canvas {
   canvas {
     height: 100vh;
   }
-  .mobile-overview {
+  #mobile-overview {
     position: absolute;
     /* height: 100%; */
     top: 70%;
     /* bottom: 70%; */
   }
-  #mobile-btns{
+  #mobile-btns {
     position: relative;
     bottom: 5%;
   }
@@ -133,7 +136,7 @@ canvas {
 .d-none {
   display: none;
 }
-.game{
+.game {
   display: flex;
   align-items: center;
   /* justify-content: center; */

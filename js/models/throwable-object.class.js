@@ -32,10 +32,10 @@ class ThrowableObject extends MovableObject {
       if (this.width < 50) {
         this.width += 10;
         this.height += 10;
-        this.speedX = 1;
+        this.speedX = 10;
         this.x += this.speedX;
       }
-      this.speedX = 5;
+      this.speedX = 15;
       this.x += this.speedX;
     }, 1000 / (fps / 10));
   }

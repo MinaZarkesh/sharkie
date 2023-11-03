@@ -23,8 +23,8 @@ class ThrowableObject extends MovableObject {
     return this.y < 160;
   }
   throw(x, y) {
-    this.width = 0;
-    this.height = 0;
+    // this.width = 0;
+    // this.height = 0;
     this.x = x + 155;
     this.y = y + 115;
 

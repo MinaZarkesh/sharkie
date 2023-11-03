@@ -31,16 +31,6 @@
     <script src="./js/game.js"></script>
   </head>
   <body>
-    <div class="mobile-overview">
-      <div id="mobile-btns">
-        <button id="mobileBtn-Left">Left</button>
-        <button id="mobileBtn-Right">Right</button>
-        <button id="mobileBtn-Up">Up</button>
-        <button id="mobileBtn-Down">Down</button>
-        <button id="mobileBtn-D">D</button>
-        <button id="mobileBtn-Space">Space</button>
-      </div>
-    </div>
     <div id="startScreen" class="startScreen">
       <div class="backgound">
         <h1>Minas Sharkie</h1>
@@ -56,6 +46,26 @@
       </div>
     </div>
     <div id="game" class="game d-none">
+      <div class="mobile-overview">
+        <div id="mobile-btns">
+          <div class="Btns-LeftSide">
+            <div>
+              <button id="mobileBtn-Up">Up</button>
+            </div>
+            <div>
+              <button id="mobileBtn-Left">Left</button>
+              <button id="mobileBtn-Right">Right</button>
+            </div>
+            <div>
+              <button id="mobileBtn-Down">Down</button>
+            </div>
+          </div>
+          <div class="Btns-RightSide">
+            <button id="mobileBtn-D">D</button>
+            <button id="mobileBtn-Space">Space</button>
+          </div>
+        </div>
+      </div>
       <!-- <h1>Sharkie</h1> -->
       <canvas id="canvas" width="720" , height="480"></canvas>
       <img

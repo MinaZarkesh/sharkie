@@ -1,39 +1,81 @@
 @font-face {
-    font-family: "sharkyFont";
-    src: url("img/5.Font/LuckiestGuy-Regular.ttf");
+  font-family: "sharkyFont";
+  src: url("img/5.Font/LuckiestGuy-Regular.ttf");
 }
 
 body {
   font-family: "sharkyFont";
-  color: rgba(83,26,130,255);
+  color: rgba(83, 26, 130, 255);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0px;
 }
-h1{
-    /* margin-top: 20%; */
-    font-size: 200%;
-    color: rgba(83,26,130,255);
+h1 {
+  /* margin-top: 20%; */
+  font-size: 200%;
+  color: rgba(83, 26, 130, 255);
 }
 
 button {
   margin: 0;
- padding: 0;
- border: none;
- background-color: transparent;
- justify-content: center;
-}
-.mobile-overview{
-/* background-color: blue; */
-position: absolute;
-top: 380px;
-width: 90%;
-/* height: 50px; */
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  justify-content: center;
 }
 
-#mobile-btns{
+.restartBtn {
+  display: flex;
+  width: 100vw;
+  max-width: 720px;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+#restart {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 16px;
+  /* width: 400px; */
+  /* top: 35%; */
+  /* left: 0; */
+  font-size: 24px;
+  /* background-color: aqua; */
+}
+
+h2 {
+  font-size: 100%;
+  color: rgb(100, 112, 163);
+}
+
+canvas {
+  width: 720px;
+  height: 480px;
+  /* display: block; */
+  background-color: black;
+}
+
+.mobile-overview {
+  /* height: 100vh; */
+  /* background-color: blue; */
+  /* display: flex; */
+  /* justify-content: center; */
+  position: absolute;
+  top: 370px;
+
+  /* left: 5%; */
+  /* width: 100%; */
+  /* height: 50px; */
+}
+
+/********for Smartphones************/
+
+#mobile-btns {
   display: flex;
   position: relative;
   flex-direction: row;
@@ -41,55 +83,67 @@ width: 90%;
   align-items: center;
 }
 
-.Btns-LeftSide{
+.Btns-LeftSide {
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.Btns-RightSide{
+.Btns-RightSide {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-#mobileBtn-Left, #mobileBtn-Right, #mobileBtn-Up, #mobileBtn-Down, #mobileBtn-D, #mobileBtn-Space{
+#mobileBtn-Left,
+#mobileBtn-Right,
+#mobileBtn-Up,
+#mobileBtn-Down,
+#mobileBtn-D,
+#mobileBtn-Space {
   margin: 4px;
   padding: 4px;
   /* border: 1px solid black;
-  background-color: aqua; */
+    background-color: aqua; */
   justify-content: center;
 }
-#restart{
-  position: relative;
-  margin: 16px;
-  font-size: 24px;
-  /* background-color: aqua; */
-}
 
-h2{
-    font-size: 100%;
-    color: rgb(100,112,163);
+@media only screen and (max-width: 720px) {
+  canvas {
+    width: 100%;
+  }
 }
-
-canvas {
-  width: 720px;
-  height: 480px;
-  /* width: 100%;
-  height: 100%; */
-  background-color: black;
+@media only screen and (max-height: 480px) {
+  canvas {
+    height: 100vh;
+  }
+  .mobile-overview {
+    position: absolute;
+    /* height: 100%; */
+    top: 70%;
+    /* bottom: 70%; */
+  }
+  #mobile-btns{
+    position: relative;
+    bottom: 5%;
+  }
 }
+/********for Smartphones************/
 .d-none {
   display: none;
 }
-#gameOver{
-  position: absolute;
-  width: 400px;
-  top: 20%;
-  left: 20%;
+.game{
   display: flex;
-
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+}
+#gameOver {
+  position: absolute;
+  width: 30%;
+  top: 15%;
+  /* left: 20%; */
 }
 .startScreen {
   overflow: hidden;
@@ -104,7 +158,6 @@ canvas {
   background-repeat: no-repeat;
 }
 
-
 #startGame img {
   width: 70%;
   min-width: 280px;
@@ -118,20 +171,20 @@ button:hover {
 }
 
 .backgound {
-    padding: 5%;
+  padding: 5%;
   width: 100vw;
   text-align: center;
 }
 
-.Start-Instructions{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.Start-Instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.Start-Instructions img{
-    margin:0%;
-    padding: 0%;
-width: 50%;
-/* max-width: fit-content; */
-min-width: 280px;
+.Start-Instructions img {
+  margin: 0%;
+  padding: 0%;
+  width: 50%;
+  /* max-width: fit-content; */
+  min-width: 280px;
 }

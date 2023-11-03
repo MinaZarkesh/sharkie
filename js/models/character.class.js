@@ -8,7 +8,7 @@ class Character extends MovableObject {
     right: 50,
     bottom: 120,
   };
-
+bubbles;
   x = 100;
   y = 80;
   img;
@@ -33,6 +33,7 @@ class Character extends MovableObject {
   shootImg = 0;
 
   bubble;
+
   // thrownBottle = false;
   hasblown = false;
   constructor() {
@@ -65,14 +66,21 @@ class Character extends MovableObject {
   }
 
   throwBubble() {
-    this.bubble = this.world.throwableObjects[0];
-    // if (!this.isThrown() && this.world.isGreen) {
+    console.log("BubblesLange: ", this.world.bubbles.length);
+    if(this.world.bubbles.length>0){
+      this.bubble = this.world.bubbles[0];
+    this.bubble.IMAGES = IMAGES_BUBBLE_GREEN;
+    }else{
+      this.bubble = new Bubble();
+      this.bubble.IMAGES = IMAGES_BUBBLE_WHITE;
+      this.world.bubbles.push(this.bubble);
+    }
     this.bubble.throw(this.x, this.y);
     this.lastThrow = new Date().getTime();
-    //   this.world.isGreen = false;
-    // } else {
-    //   this.world.isGreen = true;
-    // }
+    setTimeout(()=>{
+      this.bubble.deleteMe(this.world.bubbles);
+      console.log("Bubble gelöscht!", this.world.bubbles.length);
+    }, 3000);
   }
 
   animate() {
@@ -125,6 +133,8 @@ class Character extends MovableObject {
           this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
         }
         this.bubbleAttack();
+        this.throw();
+      
       } else if (this.world.keyboard.SPACE && this.isFinSlap) {
         this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
       } else {

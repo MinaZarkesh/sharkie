@@ -6,7 +6,7 @@ class World {
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
   collectableObjects = this.level.collectableObjects;
-  throwableObjects = [new Bubble()];
+  bubbles = [new Bubble(), new Bubble(), new Bubble(), new Bubble(), new Bubble()];
   //StatusBars
   statusBar_Coin = this.level.statusbars[0];
   statusBar_Life = this.level.statusbars[1];
@@ -31,11 +31,16 @@ class World {
 
   checkCollisions() {
     setStoppableInterval(() => {
-      if ((this.character.isDead() && !this.character.isKilled()) || (this.endboss.isDead() && !this.endboss.isKilled())) {
-        if(this.character.isDead() && !this.character.isKilled()){
-document.getElementById("gameOver").src = "./img/6.Botones/Tittles/Game Over/Recurso 12.png";
-        }else{
-          document.getElementById("gameOver").src = "./img/6.Botones/Tittles/You win/Recurso 21.png";
+      if (
+        (this.character.isDead() && !this.character.isKilled()) ||
+        (this.endboss.isDead() && !this.endboss.isKilled())
+      ) {
+        if (this.character.isDead() && !this.character.isKilled()) {
+          document.getElementById("gameOver").src =
+            "./img/6.Botones/Tittles/Game Over/Recurso 12.png";
+        } else {
+          document.getElementById("gameOver").src =
+            "./img/6.Botones/Tittles/You win/Recurso 21.png";
         }
         isGameStopped = true;
       } else {
@@ -47,9 +52,10 @@ document.getElementById("gameOver").src = "./img/6.Botones/Tittles/Game Over/Rec
   }
 
   checkBubbleEndbossCollision() {
-    this.throwableObjects.forEach((bubble) => {
+    this.bubbles.forEach((bubble) => {
       if (this.endboss.isColliding(bubble)) {
         this.endboss.hit();
+        this.statusBar_Poison.setPercentage(this.character.poison);
       }
     });
   }
@@ -110,7 +116,7 @@ document.getElementById("gameOver").src = "./img/6.Botones/Tittles/Game Over/Rec
     this.ctx.translate(this.camera_x, 0);
 
     this.addObjectsToMap(this.backgroundObjects);
-    this.addObjectsToMap(this.throwableObjects);
+    this.addObjectsToMap(this.bubbles);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.level.collectableObjects); //bottles and Coins

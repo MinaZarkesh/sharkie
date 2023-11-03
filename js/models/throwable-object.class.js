@@ -1,7 +1,7 @@
 class ThrowableObject extends MovableObject {
   ground = 400;
   acceleration = 2.5;
-  speedX = 0.2;
+  speedX = 10;
   constructor() {
     super().loadImage("./img/4. Marcadores/Posión/Light - Left.png");
     this.width = 0;
@@ -28,16 +28,23 @@ class ThrowableObject extends MovableObject {
     this.x = x + 155;
     this.y = y + 115;
 
-    setInterval(() => {
+    let bubbleInterval = setInterval(() => {
       if (this.width < 50) {
         this.width += 10;
         this.height += 10;
-        this.speedX = 10;
-        this.x += this.speedX;
       }
-      this.speedX = 15;
+      this.speedX = 10;
       this.x += this.speedX;
     }, 1000 / (fps / 10));
+    // setTimeout(()=>{
+    //   console.log("3 sekunden");
+    //    clearInterval(bubbleInterval);
+    // },3000);
+  }
+
+  deleteMe(bubbles){
+    bubbles.shift();
+    console.log("Bubbles: ", bubbles.length);
   }
 
   checkBottleOnGround() {

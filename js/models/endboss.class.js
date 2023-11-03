@@ -9,10 +9,11 @@ class Endboss extends MovableObject {
     right: 30,
     bottom: 170,
   };
-
+  energy = 100;
   hadFirstContact = false;
   y = 0;
   x = 2500;
+  speed = 0;
   IMAGES = IMAGES_ENDBOSS_FLOATING;
   IMAGES_ENDBOSS_INTRODUCING = IMAGES_ENDBOSS_INTRODUCING;
   IMAGES_ENDBOSS_FLOATING = IMAGES_ENDBOSS_FLOATING;
@@ -35,24 +36,24 @@ class Endboss extends MovableObject {
     let i = 0;
     this.x = 3000;
     setStoppableInterval(() => {
-      if(this.isDead()){
+      if (this.isDead()) {
         this.IMAGES = this.IMAGES_ENDBOSS_DEAD;
-        console.log("energy:",this.isKilled());
+        console.log("energy:", this.isKilled());
         this.imageLoop();
         this.isKilled();
-      }else if (this.isHurt()) {
+      } else if (this.isHurt()) {
         this.IMAGES = this.IMAGES_ENDBOSS_HURT;
-        console.log("energy:",this.energy );
+        console.log("energy:", this.energy);
         this.imageLoop();
-      }else if (i < 8 && this.hadFirstContact) {
-        this.moveLeft();
+      } else if (i < 8 && this.hadFirstContact) {
         this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;
         this.imageLoop();
       } else {
+        this.moveLeft();
         this.IMAGES = this.IMAGES_ENDBOSS_FLOATING;
         this.imageLoop();
       }
-      
+
       if (
         !this.hadFirstContact &&
         this.world.character.x > this.world.level.level_end_x - 20 &&
@@ -62,8 +63,8 @@ class Endboss extends MovableObject {
         i = 0;
         // this.x = 2700;
         this.x = 2500;
+        this.speed=10;
         this.hadFirstContact = true;
-        this.speed = 5;
       }
       i++;
     }, 1000 / (fps / 10));

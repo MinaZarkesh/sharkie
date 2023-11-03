@@ -3,11 +3,11 @@ class Bubble extends ThrowableObject {
   constructor() {
     // super().loadImage(IMAGES_BUBBLE_GREEN[0]);
     super().loadImages(this.IMAGES);
+    this.loadImages(IMAGES_BUBBLE_WHITE);
     this.animate();
   }
 
   animate() {
-    console.log("GREEN");
     setInterval(() => {
       this.imageLoop();
     }, 1000 / (fps / 10));

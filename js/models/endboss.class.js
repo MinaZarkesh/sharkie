@@ -63,7 +63,7 @@ class Endboss extends MovableObject {
         i = 0;
         // this.x = 2700;
         this.x = 2500;
-        this.speed=10;
+        this.speed = 10;
         this.hadFirstContact = true;
       }
       i++;

@@ -17,7 +17,7 @@ class World {
   statusBar_Coin = this.level.statusbars[0];
   statusBar_Life = this.level.statusbars[1];
   statusBar_Poison = this.level.statusbars[2];
-  //********/
+  /********/
   fishDead = 0;
   canvas;
   ctx;

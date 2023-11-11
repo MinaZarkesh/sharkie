@@ -55,5 +55,3 @@ function stopGame() {
     clearInterval(id);
   });
 }
-
-// function showMobileButtons() {}

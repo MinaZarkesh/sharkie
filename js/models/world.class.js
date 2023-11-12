@@ -90,7 +90,7 @@ class World {
         } else {
           document.getElementById("gameOver").src =
             "./img/6.Botones/Tittles/You win/Recurso 21.png";
-            this.youWinSound.play();
+          this.youWinSound.play();
         }
         isGameStopped = true;
       } else {
@@ -177,9 +177,6 @@ class World {
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
     this.addObjectsToMap(this.level.collectableObjects); //bottles and Coins
-
-    // this.addObjectsToMap(this.character.bottles); //collected throwable Objects //at start empty
-
     //drawFixedObjects
     this.ctx.translate(-this.camera_x, 0); // Back
     //fixed Objects
@@ -187,7 +184,6 @@ class World {
     this.addToMap(this.statusBar_Life);
     this.addToMap(this.statusBar_Poison);
     this.ctx.translate(this.camera_x, 0); // Forwards
-
     //move Camera to the right
     this.ctx.translate(-this.camera_x, 0);
     //draw() wird immer wieder aufgerufen
@@ -212,9 +208,6 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    // mo.drawFrame(this.ctx);
-    // mo.drawRedFrame(this.ctx);
-
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

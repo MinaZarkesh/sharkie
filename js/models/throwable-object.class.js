@@ -2,6 +2,7 @@ class ThrowableObject extends MovableObject {
   ground = 400;
   acceleration = 2.5;
   speedX = 10;
+
   constructor() {
     super().loadImage("./img/4. Marcadores/Posión/Light - Left.png");
     this.width = 0;
@@ -23,8 +24,6 @@ class ThrowableObject extends MovableObject {
     return this.y < 160;
   }
   throw(x, y) {
-    // this.width = 0;
-    // this.height = 0;
     this.x = x + 155;
     this.y = y + 115;
 
@@ -36,20 +35,9 @@ class ThrowableObject extends MovableObject {
       this.speedX = 10;
       this.x += this.speedX;
     }, 1000 / (fps / 10));
-    // setTimeout(()=>{
-    //   console.log("3 sekunden");
-    //    clearInterval(bubbleInterval);
-    // },3000);
   }
 
-  deleteMe(bubbles){
+  deleteMe(bubbles) {
     bubbles.shift();
-    console.log("Bubbles: ", bubbles.length);
-  }
-
-  checkBottleOnGround() {
-    if (this.y > this.ground) {
-      console.log("Flasche weggeschmissen! ");
-    }
   }
 }

@@ -38,12 +38,10 @@ class Endboss extends MovableObject {
     setStoppableInterval(() => {
       if (this.isDead()) {
         this.IMAGES = this.IMAGES_ENDBOSS_DEAD;
-        console.log("energy:", this.isKilled());
         this.imageLoop();
         this.isKilled();
       } else if (this.isHurt()) {
         this.IMAGES = this.IMAGES_ENDBOSS_HURT;
-        console.log("energy:", this.energy);
         this.imageLoop();
       } else if (i < 8 && this.hadFirstContact) {
         this.IMAGES = this.IMAGES_ENDBOSS_INTRODUCING;

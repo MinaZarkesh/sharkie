@@ -9,10 +9,6 @@ class Bottle extends CollectableObject {
     this.loadImages(this.IMAGES);
     this.x = x;
     this.y = y;
-    // this.loadImages(this.IMAGES_DARK_LEFT);
-    // this.loadImages(this.IMAGES_DARK_RIGHT);
-    // this.loadImages(this.IMAGES_LIGHT_LEFT);
-    // this.loadImages(this.IMAGES_LIGHT_RIGHT);
     this.animate();
   }
 
@@ -23,22 +19,7 @@ class Bottle extends CollectableObject {
   }
 
   disappear(co) {
-    console.log("eingesammelt: ", co);
     this.index = co.indexOf(this);
     co.splice(this.index, 1);
-    console.log("Collectables: ", co);
   }
 }
-
-// IMAGES_LIGHT_LEFT = [
-//   "img/4. Marcadores/Posión/Light - Left.png"
-// ];
-// IMAGES_LIGHT_RIGHT = [
-//   "img/4. Marcadores/Posión/Light - Right.png"
-// ];
-// IMAGES_DARK_LEFT = [
-//   "img/4. Marcadores/Posión/Dark - Left.png"
-// ];
-// IMAGES_DARK_RIGHT = [
-//   "img/4. Marcadores/Posión/Dark - Right.png"
-// ];

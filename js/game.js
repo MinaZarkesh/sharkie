@@ -23,7 +23,7 @@ function toggleSound() {
     // src="./img/speaker-filled-audio-tool.png"
     isMute = true;
   }
-  console.log("Hello", speaker.src);
+  // console.log("Hello", speaker.src);
 }
 
 function startGame() {
@@ -59,6 +59,7 @@ function restartGame() {
   document.getElementById("gameOver").style = "display: none";
   document.getElementById("restart").style = "display: none";
   document.getElementById("mobile-overview").style = "display: none";
+  document.getElementById("mobileBtn-Sound").style = "display: none";
   resetGame();
 }
 

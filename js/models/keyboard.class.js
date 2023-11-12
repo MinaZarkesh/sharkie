@@ -5,6 +5,7 @@ class Keyboard {
   DOWN = false;
   SPACE = false;
   D = false;
+  SOUND = false;
 
   constructor() {
     this.bindKeyPressEvents();
@@ -12,6 +13,8 @@ class Keyboard {
   }
 
   bindMobileBtsPressEvents() {
+
+    
     document
       .getElementById('mobileBtn-Left')
       .addEventListener('touchstart', (event) => {

@@ -2,7 +2,7 @@ let canvas;
 let world;
 let isGameStopped = false;
 let keyboard;
-
+let isMute = true;
 function init() {
   canvas = document.getElementById("canvas");
   initLevel();
@@ -11,10 +11,26 @@ function init() {
   console.log("My Character is: ", world.character);
 }
 
+function toggleSound() {
+  let speaker = document.getElementById("btn-speaker");
+  if (isMute) {
+    speaker.src = "./img/speaker-filled-audio-tool.png";
+    isMute =false;
+    world.setVolumeSounds();
+  } else{
+    speaker.src = "./img/enable-sound.png";
+    world.muteVolumeSounds();
+    // src="./img/speaker-filled-audio-tool.png"
+    isMute = true;
+  }
+  console.log("Hello", speaker.src);
+}
+
 function startGame() {
   document.getElementById("game").classList.remove("d-none");
   document.getElementById("canvas").classList.remove("d-none");
   document.getElementById("startScreen").style.display = "none";
+  document.getElementById("mobileBtn-Sound").style = "display: flex";
   document.getElementById("mobile-overview").style = "display: flex";
   document.getElementById("gameOver").style = "display: none";
   document.getElementById("restart").style = "display: none";

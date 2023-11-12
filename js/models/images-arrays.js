@@ -2,6 +2,13 @@ let intervalIds = [];
 let canvasWidth = 720;
 let canvasHeight = 480;
 let fps = 60;
+
+/**
+ * Sets an interval to repeatedly execute a function with a specified time interval.
+ *
+ * @param {function} fn - The function to be executed.
+ * @param {number} time - The time interval between each execution in milliseconds.
+ */
 function setStoppableInterval(fn, time) {
   let interval = setInterval(fn, time);
   intervalIds.push(interval);

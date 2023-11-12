@@ -11,6 +11,14 @@ class Level {
   statusbars;
   collectableObjects;
 
+    /**
+   * Initializes the constructor with the given parameters.
+   *
+   * @param {type} enemies - the enemies to be initialized
+   * @param {type} backgroundobjects - the background objects to be initialized
+   * @param {type} collectableObjects - the collectable objects to be initialized
+   * @param {type} statusbars - the status bars to be initialized
+   */
   constructor(enemies, backgroundobjects, collectableObjects, statusbars) {
     this.enemies = enemies;
     this.backgroundobjects = backgroundobjects;

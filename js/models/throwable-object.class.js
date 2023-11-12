@@ -3,6 +3,10 @@ class ThrowableObject extends MovableObject {
   acceleration = 2.5;
   speedX = 10;
 
+    /**
+   * Constructor function for initializing the object.
+   *
+   */
   constructor() {
     super().loadImage("./img/4. Marcadores/Posión/Light - Left.png");
     this.width = 0;
@@ -11,6 +15,10 @@ class ThrowableObject extends MovableObject {
     this.y = 80;
   }
 
+    /**
+   * Apply gravity to the object.
+   *
+   */
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
@@ -20,9 +28,22 @@ class ThrowableObject extends MovableObject {
     }, 1000 / fps);
   }
 
+    /**
+   * Check if the object is above the ground.
+   *
+   * @return {boolean} Returns true if the object is above the ground, false otherwise.
+   */
+
   isAboveGround() {
     return this.y < 160;
   }
+
+    /**
+   * Throws the given x and y values.
+   *
+   * @param {type} x - The x value to throw.
+   * @param {type} y - The y value to throw.
+   */
   throw(x, y) {
     this.x = x + 155;
     this.y = y + 115;
@@ -37,6 +58,12 @@ class ThrowableObject extends MovableObject {
     }, 1000 / (fps / 10));
   }
 
+  /**
+   * Delete the first element from the given array bubbles.
+   *
+   * @param {Array} bubbles - The array from which the first element will be deleted.
+   * 
+   */  
   deleteMe(bubbles) {
     bubbles.shift();
   }

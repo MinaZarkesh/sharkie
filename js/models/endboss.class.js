@@ -21,6 +21,11 @@ class Endboss extends MovableObject {
   IMAGES_ENDBOSS_HURT = IMAGES_ENDBOSS_HURT;
   IMAGES_ENDBOSS_DEAD = IMAGES_ENDBOSS_DEAD;
 
+    /**
+   * Initializes the constructor.
+   *
+   * @constructor
+   */
   constructor() {
     super().loadImage(this.IMAGES[0]);
     this.hadFirstContact = false;
@@ -32,6 +37,10 @@ class Endboss extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Animates the object based on its current state and conditions.
+   *
+   */  
   animate() {
     let i = 0;
     this.x = 3000;
@@ -52,19 +61,20 @@ class Endboss extends MovableObject {
         this.imageLoop();
       }
 
+      //set new position if 10 Fish are dead
       if (
         !this.hadFirstContact &&
         this.world.character.x > this.world.level.level_end_x - 20 &&
         this.world.fishDead > 9
       ) {
-        //wenn 10/15 Fish tot sind;
+        //if 10/15 Fish dead;
         i = 0;
-        // this.x = 2700;
         this.x = 2500;
         this.speed = 10;
         this.hadFirstContact = true;
       }
       i++;
+
     }, 1000 / (fps / 10));
   }
 }

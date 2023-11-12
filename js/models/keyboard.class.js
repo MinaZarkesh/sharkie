@@ -5,92 +5,99 @@ class Keyboard {
   DOWN = false;
   SPACE = false;
   D = false;
-  SOUND = false;
 
+  /**
+   * Initializes the constructor by binding key press events and mobile button press events.
+   */
   constructor() {
     this.bindKeyPressEvents();
     this.bindMobileBtsPressEvents();
   }
 
+  /**
+   * Binds the press events for the mobile buttons.
+   *
+   */
   bindMobileBtsPressEvents() {
-
-    
     document
-      .getElementById('mobileBtn-Left')
-      .addEventListener('touchstart', (event) => {
+      .getElementById("mobileBtn-Left")
+      .addEventListener("touchstart", (event) => {
         event.preventDefault();
         this.LEFT = true;
       });
     document
-      .getElementById('mobileBtn-Left')
-      .addEventListener('touchend', (event) => {
+      .getElementById("mobileBtn-Left")
+      .addEventListener("touchend", (event) => {
         event.preventDefault();
         this.LEFT = false;
       });
-      document
-      .getElementById('mobileBtn-Right')
-      .addEventListener('touchstart', (event) => {
+    document
+      .getElementById("mobileBtn-Right")
+      .addEventListener("touchstart", (event) => {
         event.preventDefault();
         this.RIGHT = true;
       });
     document
-      .getElementById('mobileBtn-Right')
-      .addEventListener('touchend', (event) => {
+      .getElementById("mobileBtn-Right")
+      .addEventListener("touchend", (event) => {
         event.preventDefault();
         this.RIGHT = false;
       });
-      document
-      .getElementById('mobileBtn-Up')
-      .addEventListener('touchstart', (event) => {
+    document
+      .getElementById("mobileBtn-Up")
+      .addEventListener("touchstart", (event) => {
         event.preventDefault();
         this.UP = true;
       });
     document
-      .getElementById('mobileBtn-Up')
-      .addEventListener('touchend', (event) => {
+      .getElementById("mobileBtn-Up")
+      .addEventListener("touchend", (event) => {
         event.preventDefault();
         this.UP = false;
       });
-      document
-      .getElementById('mobileBtn-Down')
-      .addEventListener('touchstart', (event) => {
+    document
+      .getElementById("mobileBtn-Down")
+      .addEventListener("touchstart", (event) => {
         event.preventDefault();
         this.DOWN = true;
       });
     document
-      .getElementById('mobileBtn-Down')
-      .addEventListener('touchend', (event) => {
+      .getElementById("mobileBtn-Down")
+      .addEventListener("touchend", (event) => {
         event.preventDefault();
         this.DOWN = false;
       });
-      document
-      .getElementById('mobileBtn-D')
-      .addEventListener('touchstart', (event) => {
+    document
+      .getElementById("mobileBtn-D")
+      .addEventListener("touchstart", (event) => {
         event.preventDefault();
         this.D = true;
       });
     document
-      .getElementById('mobileBtn-D')
-      .addEventListener('touchend', (event) => {
+      .getElementById("mobileBtn-D")
+      .addEventListener("touchend", (event) => {
         event.preventDefault();
         this.D = false;
       });
-      document
-      .getElementById('mobileBtn-Space')
-      .addEventListener('touchstart', (event) => {
+    document
+      .getElementById("mobileBtn-Space")
+      .addEventListener("touchstart", (event) => {
         event.preventDefault();
         this.SPACE = true;
         world.character.isFinSlap = true;
       });
     document
-      .getElementById('mobileBtn-Space')
-      .addEventListener('touchend', (event) => {
+      .getElementById("mobileBtn-Space")
+      .addEventListener("touchend", (event) => {
         event.preventDefault();
         this.SPACE = false;
         world.character.isFinSlap = false;
       });
   }
 
+  /**
+ * Binds key press events to the window.
+ */
   bindKeyPressEvents() {
     //EventListener for the Keys
     window.addEventListener("keydown", (event) => {

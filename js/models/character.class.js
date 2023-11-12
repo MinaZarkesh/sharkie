@@ -34,7 +34,9 @@ class Character extends MovableObject {
   bubble;
   hasblown = false;
 
-
+  /**
+   * Constructor for the class.
+   */
   constructor() {
     super().loadImage(IMAGES_IDLE[0]);
     //for animation
@@ -49,6 +51,10 @@ class Character extends MovableObject {
     this.animate();
   }
 
+    /**
+   * Updates the `coinStatus` by adding 100 divided by 15 to it.
+   * If `coinStatus` exceeds 100, it is set to 100.
+   */
   collectCoin() {
     this.coinStatus += 100 / 15;
     if (this.coinStatus > 100) {
@@ -56,7 +62,10 @@ class Character extends MovableObject {
     }
   }
 
-
+  /**
+   * Collects a bottle and increases the poison level.
+   * 
+   */
   collectBottle() {
     this.poison += 100 / 5;
     if (this.poison > 100) {
@@ -64,7 +73,10 @@ class Character extends MovableObject {
     }
   }
 
-
+    /**
+   * Throws a bubble.
+   *
+   */
   throwBubble() {
     if (this.world.bubbles.length > 0) {
       this.bubble = this.world.bubbles[0];
@@ -82,6 +94,10 @@ class Character extends MovableObject {
   }
 
 
+    /**
+   * Animates the element by calling two different functions repeatedly.
+   *
+   */
   animate() {
     setStoppableInterval(() => {
    this.changeMoving();
@@ -92,6 +108,10 @@ class Character extends MovableObject {
     }, 1000 / (fps / 10));
   }
 
+
+    /**
+   * Change the movement of the object based on keyboard input.
+   */
   changeMoving(){
     if (
       this.world.keyboard.RIGHT &&
@@ -123,6 +143,12 @@ class Character extends MovableObject {
     }
   }
 
+
+  /**
+   * Change the images based on the current state of the character.
+   *
+   * @return {undefined} No return value.
+   */
   changeImages(){
     if (this.isDead()) {
       this.IMAGES = this.IMAGES_DEAD;
@@ -150,6 +176,11 @@ class Character extends MovableObject {
     this.imageLoop(); // playAnimation
   }
 
+    /**
+   * Determines if the player is swimming.
+   *
+   * @return {boolean} Returns true if any of the arrow keys are pressed, indicating that the player is swimming. Otherwise, returns false.
+   */
   isSwimming() {
     return (
       this.world.keyboard.RIGHT ||
@@ -159,6 +190,10 @@ class Character extends MovableObject {
     );
   }
 
+    /**
+   * Executes the bubble attack.
+   *
+   */
   bubbleAttack() {
     if (this.shootImg < IMAGES_ATTACK_GREEN_BUBBLE.length) {
       this.imageLoop();
@@ -170,12 +205,20 @@ class Character extends MovableObject {
     }
   }
 
+    /**
+   * Moves the object to the left.
+   *
+   */
   moveLeft() {
     this.x -= this.speed;
     this.world.camera_x = -this.x + 100;
     this.otherDirection = true;
   }
 
+    /**
+   * Moves the object to the right.
+   *
+   */
   moveRight() {
     this.x += this.speed;
     this.world.camera_x = -this.x + 100;

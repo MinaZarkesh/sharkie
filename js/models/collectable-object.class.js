@@ -7,6 +7,13 @@ class CollectableObject extends MovableObject {
   offsetHeight = 0;
   index;
 
+
+    /**
+   * Initializes a new instance of the class.
+   *
+   * @param {type} x - The x coordinate.
+   * @param {type} y - The y coordinate.
+   */
   constructor(x, y) {
     super();
 
@@ -14,6 +21,12 @@ class CollectableObject extends MovableObject {
     this.y = y;
   }
 
+    /**
+   * Deletes the current Collectable Object from the given array.
+   *
+   * @param {Array} co - Collectable Objects (Coins or Bottles)
+   * 
+   */
   disappear(co) {
     //co => Collectable Objects Coins or Bottles
     this.index = co.indexOf(this);

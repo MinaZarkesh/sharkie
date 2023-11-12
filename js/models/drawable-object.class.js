@@ -17,10 +17,22 @@ class DrawableObject {
   };
 
   //for drawing
+
+    /**
+   * Draws an image on the canvas context.
+   *
+   * @param {CanvasRenderingContext2D} ctx - The canvas rendering context.
+   * 
+   */
   draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 
+    /**
+   * Draws a frame on the canvas context if the object is a Character, Fish, or Endboss.
+   * without offset
+   * @param {Object} ctx - The canvas context to draw on.
+   */
   drawFrame(ctx) {
     if (
       this instanceof Character ||
@@ -35,6 +47,12 @@ class DrawableObject {
     }
   }
 
+    /**
+   * Draws a red frame around the given context if the object is an instance of Fish or Character.
+   * with offset
+   * @param {CanvasRenderingContext2D} ctx - The rendering context on which to draw the frame.
+   * 
+   */
   drawRedFrame(ctx) {
     if (this instanceof Fish || this instanceof Character) {
       //|| this instanceof Fish || this instanceof Endboss
@@ -51,10 +69,12 @@ class DrawableObject {
     }
   }
 
+
   /**
+   * Loads the images from the given array and caches them for future use.
    *
-   * @param {array} array - Bilderabfolge:
-   */
+   * @param {Array} array - An array of image paths.
+   */  
   loadImages(array) {
     array.forEach((path) => {
       let img = new Image();
@@ -63,12 +83,22 @@ class DrawableObject {
     });
   }
 
+  /**
+   * Loads an image from the specified path.
+   *
+   * @param {string} path - The path of the image file.
+   * @return {void}
+   */
   loadImage(path) {
     this.img = new Image();
     this.img.src = path;
   }
 
-  //ImageLoop
+    /**
+   * Executes an image loop.
+   *
+   * @return {undefined} The function does not return a value.
+   */
   imageLoop() {
     if (
       (this.oldAnimationPath == "" || this.oldAnimationPath != this.IMAGES[0])

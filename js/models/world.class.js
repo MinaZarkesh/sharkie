@@ -1,6 +1,7 @@
 class World {
   character = new Character();
   endboss = new Endboss();
+
   //level-Objects
   level = level1;
   enemies = this.level.enemies;
@@ -18,12 +19,15 @@ class World {
   statusBar_Life = this.level.statusbars[1];
   statusBar_Poison = this.level.statusbars[2];
   /********/
+
   fishDead = 0;
   canvas;
   ctx;
   keyboard;
   camera_x = 0;
   isGreen = false;
+
+  /**Sounds***/
   coinSound = new Audio(
     "./audio/362445__tuudurt__positive-response_collecting.wav"
   );
@@ -52,6 +56,13 @@ class World {
     this.sharkieMovingSound,
   ];
 
+
+    /**
+   * Constructor function for the class.
+   *
+   * @param {Object} canvas - The canvas element.
+   * @param {Object} keyboard - The keyboard object.
+   */
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -63,6 +74,11 @@ class World {
     this.checkCollisions();
   }
 
+
+    /**
+   * Mutes the volume of all sounds.
+   *
+   */
   muteVolumeSounds() {
     this.sounds.forEach((s) => {
       s.load();
@@ -70,6 +86,12 @@ class World {
     });
   }
 
+    /**
+   * Sets the volume for all sounds.
+   *
+   * This function iterates through each sound in the `sounds` array and sets its volume to 0.2.
+   * It also calls the `load()` method for each sound to ensure it is ready to play.
+   */
   setVolumeSounds() {
     this.sounds.forEach((s) => {
       s.load();
@@ -77,6 +99,10 @@ class World {
     });
   }
 
+  /**
+ * Checks for collisions in the game.
+ *
+ */
   checkCollisions() {
     setStoppableInterval(() => {
       if (
@@ -101,6 +127,11 @@ class World {
     }, 500); //2mal pro sekunde
   }
 
+  /**
+   * Checks for collision between the endboss and bubbles,
+   * and performs necessary actions if a collision occurs.
+   *
+   */
   checkBubbleEndbossCollision() {
     this.bubbles.forEach((bubble) => {
       if (this.endboss.isColliding(bubble)) {
@@ -111,6 +142,10 @@ class World {
     });
   }
 
+    /**
+   * Checks for collisions with enemies.
+   *
+   */
   checkEnemyCollisions() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
@@ -128,7 +163,6 @@ class World {
             this.character.hit();
             this.sharkieHurtSound.play();
             this.statusBar_Life.setPercentage(this.character.energy);
-            // enemy can not attack again for 1sec
           }
         }
       }
@@ -136,6 +170,11 @@ class World {
   }
 
   //check if Character is Collinding a Collactable Object, if it`s a throwable Object, it moves to "Bottles"-Array
+
+    /**
+   * Check for collisions with collectable objects.
+   *
+   */
   checkCollisionsCO() {
     this.collectableObjects.forEach((co) => {
       //co => collectable Object
@@ -158,6 +197,11 @@ class World {
     });
   }
 
+
+  /**
+ * Sets the world for the character, endboss, and enemies.
+ *
+ */
   setWorld() {
     this.character.world = this;
     this.endboss.world = this;
@@ -167,6 +211,10 @@ class World {
     this.enemies.push(this.endboss);
   }
 
+    /**
+   * Draws the game on the canvas.
+   *
+   */
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     //move Camera to the left
@@ -197,11 +245,22 @@ class World {
     }
   }
 
+    /**
+   * Adds objects to the map.
+   *
+   * @param {Array} objects - The objects to be added to the map.
+   */
   addObjectsToMap(objects) {
     objects.forEach((o) => {
       this.addToMap(o);
     });
   }
+
+    /**
+   * Add a movableObject to the map.
+   *
+   * @param {movableObject} mo - The movableObject to be added.
+   */
   addToMap(mo) {
     //mo--> movableObject
     if (mo.otherDirection) {
@@ -213,6 +272,11 @@ class World {
     }
   }
 
+    /**
+   * Flips an image horizontally.
+   *
+   * @param {Object} mo - The image object to be flipped.
+   */
   flipImage(mo) {
     this.ctx.save();
     this.ctx.translate(mo.width, 0);
@@ -220,6 +284,12 @@ class World {
     mo.x = mo.x * -1;
   }
 
+
+    /**
+   * Flips the image back horizontally.
+   *
+   * @param {object} mo - The image object to be flipped back.
+   */
   flipImageBack(mo) {
     mo.x = mo.x * -1;
     this.ctx.restore();

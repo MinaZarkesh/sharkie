@@ -1,5 +1,9 @@
 let level1;
 
+/**
+ * Initializes the level by creating the necessary objects and setting up the initial state.
+ *
+ */
 function initLevel() {
   level1 = new Level(
     [
@@ -19,7 +23,6 @@ function initLevel() {
       new Fish(),
       new Fish(),
       new Fish(),
-      // new Endboss(),
     ],
     [
       new BackgroundObject("./img/3. Background/Layers/5. Water/L1.png", -720),
@@ -91,7 +94,7 @@ function initLevel() {
       ),
     ],
     [
-      // 15 Coins //5 Flaschen
+      // 15 Coins //5 Bottles
       //x,y Position
       new Coin(700, 360),
       new Coin(300, 160),

@@ -20,6 +20,10 @@ class Fish extends MovableObject {
   GREEN_DEAD = GREEN_DEAD;
   energy = 10;
 
+  /**
+   * Initializes the object and sets its initial state.
+   *
+   */
   constructor() {
     //Math.random_> 0-1
     super().loadImage(this.IMAGES[0]);
@@ -35,6 +39,12 @@ class Fish extends MovableObject {
     this.animate(); //animate
   }
 
+  /**
+   * Animates the element by continuously moving it left and up.
+   *
+   * @param {number} fps - the number of frames per second for the animation
+   * 
+   */
   animate() {
     setStoppableInterval(() => {
       if (this.isDead()) {
@@ -47,12 +57,12 @@ class Fish extends MovableObject {
 
     let swimInterval;
 
+    //introduction for the first time
     swimInterval = setInterval(() => {
-
       if (this.isDead() || this.x < -720) {
         this.IMAGES = this.GREEN_DEAD;
         this.isKilled(swimInterval);
-         this.world.fishDead ++;
+        this.world.fishDead++;
       } else if (this.isHurt()) {
         this.IMAGES = this.GREEN_TRANSITION;
         this.imageLoop();
@@ -62,10 +72,15 @@ class Fish extends MovableObject {
         this.IMAGES = this.GREEN_SWIM;
         this.imageLoop();
       }
-      
     }, 1000 / (fps / 10));
   }
 
+  /**
+   * Stops the given interval and loads a new image.
+   *
+   * @param {type} interval - The interval to be cleared.
+   *
+   */
   isKilled(interval) {
     clearInterval(interval);
     this.loadImage(this.GREEN_DEAD[2]);

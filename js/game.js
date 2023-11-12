@@ -4,7 +4,10 @@ let isGameStopped = false;
 let keyboard;
 let isMute = true;
 
-
+/**
+ * Initializes the application.
+ *
+ */
 function init() {
   canvas = document.getElementById("canvas");
   initLevel();
@@ -12,7 +15,10 @@ function init() {
   world = new World(canvas, keyboard);
 }
 
-
+/**
+ * Toggles the sound on and off.
+ *
+ */
 function toggleSound() {
   let speaker = document.getElementById("btn-speaker");
   if (isMute) {
@@ -26,7 +32,12 @@ function toggleSound() {
   }
 }
 
-
+/**
+ * /**
+ * Starts the game by displaying the game elements and hiding the start screen.
+ *
+ * @return {undefined} No return value.
+ */
 function startGame() {
   document.getElementById("game").classList.remove("d-none");
   document.getElementById("canvas").classList.remove("d-none");
@@ -40,6 +51,11 @@ function startGame() {
 }
 
 
+/**
+ * Checks if the game is stopped and calls the endScreen function if it is.
+ *
+ * @param {type} isGameStopped - a boolean indicating if the game is stopped
+ */
 function checkEndGame() {
   if (isGameStopped) {
     endScreen();
@@ -47,6 +63,10 @@ function checkEndGame() {
 }
 
 
+/**
+ * Displays the end screen and restart button, and stops the game.
+ *
+ */
 function endScreen() {
   document.getElementById("gameOver").style = "display: flex";
   document.getElementById("restart").style = "display: flex";
@@ -54,6 +74,10 @@ function endScreen() {
 }
 
 
+/**
+ * Restart the game.
+ *
+ */
 function restartGame() {
   document.getElementById("game").classList.add("d-none");
   document.getElementById("canvas").classList.add("d-none");
@@ -66,11 +90,20 @@ function restartGame() {
 }
 
 
+/**
+ * Resets the game.
+ *
+ */
 function resetGame() {
   isGameStopped = false;
 }
 
 
+/**
+ * Stops the game by clearing all interval IDs.
+ *
+ * @param {Array<number>} intervalIds - The array of interval IDs to be cleared.
+ */
 function stopGame() {
   intervalIds.forEach((id) => {
     clearInterval(id);

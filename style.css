@@ -70,7 +70,9 @@ canvas {
   /* display: flex; */
   /* justify-content: center; */
   position: absolute;
-  top: 370px;
+  /* bottom: 1em; */
+  top: 50%;
+/* z-index: 2; */
 
   /* left: 5%; */
   /* width: 100%; */
@@ -88,18 +90,26 @@ canvas {
 }
 
 .Btns-LeftSide {
+  position: relative;
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-image: url("./img/6.Botones/Key/arrowkeys.png");
-  background-size: cover;
+  background-image: url("./img/6.Botones/Key/arrowkeys copy.svg");
+  background-size:100%;
+  background-repeat: no-repeat;
+  /* height: 15vh; */
+  gap: 4px;
 }
 
+
+
 .Btns-RightSide {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
 }
 
 #mobileBtn-Left,
@@ -108,11 +118,30 @@ canvas {
 #mobileBtn-Down,
 #mobileBtn-D,
 #mobileBtn-Space {
-  margin: 4px;
+  margin: 8px;
   padding: 4px;
   /* border: 1px solid black;
     background-color: aqua; */
   justify-content: center;
+}
+
+#mobileBtn-D{
+  /* margin: 4px;
+  padding: 4px; */
+  background-image: url("./img/6.Botones/Key/Dkey.png");
+  background-size:50%;
+  background-repeat: no-repeat;
+  height: 5vh;
+  width: 5vw;
+}
+#mobileBtn-Space{
+  margin: 0;
+  padding: 0;
+  background-image: url("./img/6.Botones/Key/SpaceBarkey.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  height: 5vh;
+  width: 15vw;
 }
 
 @media only screen and (max-width: 720px) {

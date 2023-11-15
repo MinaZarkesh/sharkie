@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/x-icon" href="./img/1.Sharkie/3.Swim/1.png">
+    <link rel="icon" type="image/x-icon" href="./img/1.Sharkie/3.Swim/1.png" />
     <script src="./js/models/images-arrays.js"></script>
     <script src="./js/models/drawable-object.class.js"></script>
     <script src="./js/models/movable-object.class.js"></script>
@@ -37,18 +37,22 @@
         <h1>Minas Sharkie</h1>
         <h2>defeat the monsters of the ocean</h2>
         <div class="Start-Instructions">
-         <div class="start-Keys">
-          <img src="./img/6.Botones/Key/arrowkeys.png" alt="">
-          <h3>MOVE SHARKIE</h3>
-         </div>
-         <div class="start-Keys">
-          <img src="./img/6.Botones/Key/Dkey.png" alt="">
-          <h3>Bubble Attack for Endboss</h3>
-         </div>
-         <div class="start-Keys">
-          <img id="Start-SpaceBar" src="./img/6.Botones/Key/SpaceBarkey.png" alt="">
-          <h3 id="Start-SpaceBarh3">Fin Slap for Puffer Fish</h3>
-         </div>
+          <div class="start-Keys">
+            <img src="./img/6.Botones/Key/arrowkeys.png" alt="" />
+            <h3>MOVE SHARKIE</h3>
+          </div>
+          <div class="start-Keys">
+            <img src="./img/6.Botones/Key/Dkey.png" alt="" />
+            <h3>Bubble Attack for Endboss</h3>
+          </div>
+          <div class="start-Keys">
+            <img
+              id="Start-SpaceBar"
+              src="./img/6.Botones/Key/SpaceBarkey.png"
+              alt=""
+            />
+            <h3 id="Start-SpaceBarh3">Fin Slap for Puffer Fish</h3>
+          </div>
         </div>
         <div>
           <button id="startGame" onclick="startGame()">
@@ -57,39 +61,52 @@
         </div>
       </div>
     </div>
-    <div id="game" class="game d-none">
-      <button class="d-none" onclick="toggleSound()"  id="mobileBtn-Sound">
-        <img id="btn-speaker" width="20px" height="20px" src="./img/speaker-filled-audio-tool.png" alt="Sound">
-      </button>
-      <div class="d-none" id="mobile-overview">
-        <div id="mobile-btns">
-          <div class="Btns-LeftSide">
-            <div>
-              <button id="mobileBtn-Up"></button>
+
+    <div id="game-background">
+      <div id="game" class="game d-none">
+        <button class="d-none" onclick="toggleSound()" id="mobileBtn-Sound">
+          <img
+            id="btn-speaker"
+            width="20px"
+            height="20px"
+            src="./img/speaker-filled-audio-tool.png"
+            alt="Sound"
+          />
+        </button>
+        <div class="d-none" id="mobile-overview">
+          <div id="mobile-btns">
+            <div class="Btns-LeftSide">
+              <div>
+                <button id="mobileBtn-Up"></button>
+              </div>
+              <div>
+                <button id="mobileBtn-Left"></button>
+                <button id="mobileBtn-Down"></button>
+                <button id="mobileBtn-Right"></button>
+              </div>
             </div>
-            <div>
-              <button id="mobileBtn-Left"></button>
-              <button id="mobileBtn-Down"></button>
-              <button id="mobileBtn-Right"></button>
+            <div class="Btns-RightSide">
+              <button id="mobileBtn-D"></button>
+              <button id="mobileBtn-Space"></button>
             </div>
-          </div>
-          <div class="Btns-RightSide">
-            <button id="mobileBtn-D"></button>
-            <button id="mobileBtn-Space"></button>
           </div>
         </div>
-      </div>
-      <canvas id="canvas" class="d-none" width="720" , height="480"></canvas>
-      <img
-        id="gameOver"
-        class="d-none"
-        src="./img/6.Botones/Tittles/Game Over/Recurso 12.png"
-        alt="Game over"
-      />
-      <div class="restartBtn d-none" id="restart">
-        <button  onclick="restartGame()">
-        <img src="./img/6.Botones/Try again/Recurso 17.png" width="40%" alt="">
-        </button>
+        <canvas id="canvas" class="d-none" width="720" , height="480"></canvas>
+        <img
+          id="gameOver"
+          class="d-none"
+          src="./img/6.Botones/Tittles/Game Over/Recurso 12.png"
+          alt="Game over"
+        />
+        <div class="restartBtn d-none" id="restart">
+          <button onclick="restartGame()">
+            <img
+              src="./img/6.Botones/Try again/Recurso 17.png"
+              width="40%"
+              alt=""
+            />
+          </button>
+        </div>
       </div>
     </div>
   </body>

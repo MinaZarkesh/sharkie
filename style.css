@@ -31,7 +31,7 @@ justify-content: center;
 }
 .start-Buttons{
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   gap: 5%;
 }
 

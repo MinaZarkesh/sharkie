@@ -12,8 +12,8 @@ start.innerHTML = `
   <h2>defeat the monsters of the ocean</h2>
   <div class="Start-Instructions">
     <div class="start-Keys">
-      <img src="./img/6.Botones/Key/arrowkeys.png" alt="" />
-      <h3>MOVE SHARKIE</h3>
+      <img id="Start-ArrowKeys" src="./img/6.Botones/Key/arrowkeys.png" alt="" />
+      <h3 id="Start-ArrowKeysh3">MOVE SHARKIE</h3>
     </div>
     <div class="start-Keys">
       <img src="./img/6.Botones/Key/Dkey.png" alt="" />
@@ -67,7 +67,6 @@ function startGame() {
   document.getElementById("mobile-overview").style = "display: flex";
   document.getElementById("gameOver").style = "display: none";
   document.getElementById("restart").style = "display: none";
-
   initGame();
   setStoppableInterval(checkEndGame, 1000);
 }
@@ -81,6 +80,8 @@ function startGame() {
 function checkEndGame() {
   if (isGameStopped) {
     endScreen();
+  }else{
+    //check if its landscape mode
   }
 }
 

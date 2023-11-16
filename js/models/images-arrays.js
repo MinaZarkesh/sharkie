@@ -3,6 +3,7 @@ let canvasWidth = 720;
 let canvasHeight = 480;
 let fps = 60;
 
+
 /**
  * Sets an interval to repeatedly execute a function with a specified time interval.
  *

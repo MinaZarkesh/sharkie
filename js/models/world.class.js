@@ -7,6 +7,8 @@ class World {
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
   collectableObjects = this.level.collectableObjects;
+  
+  //sollte noch nicht vorher drin sein
   bubbles = [
     new Bubble(),
     new Bubble(),
@@ -18,6 +20,7 @@ class World {
   statusBar_Coin = this.level.statusbars[0];
   statusBar_Life = this.level.statusbars[1];
   statusBar_Poison = this.level.statusbars[2];
+  statusBar_Endboss = this.level.statusbars[3];
   /********/
 
   fishDead = 0;
@@ -27,34 +30,6 @@ class World {
   camera_x = 0;
   isGreen = false;
 
-  /**Sounds***/
-  coinSound = new Audio(
-    "./audio/362445__tuudurt__positive-response_collecting.wav"
-  );
-  finSlapSound = new Audio(
-    "./audio/361010__projectsu012__bassdrum2-sfxr_finSlap.wav"
-  );
-  sharkieHurtSound = new Audio(
-    "./audio/360915__projectsu012__shiplosspart1_hurt.wav"
-  );
-  youWinSound = new Audio("./audio/666280__logatron__oldtada_youWin.wav");
-  gameOverSound = new Audio(
-    "./audio/333785__projectsu012__8-bit-failure-sound_gameOver.wav"
-  );
-  fishDeadSound = new Audio("./audio/360870__projectsu012__ting1_fishDead.wav");
-  EndbossHurtSound = new Audio("./audio/705168__cheezitboi__oof.mp3");
-  sharkieMovingSound = new Audio("./audio/705825__slot5000__swim16_moving.ogg");
-
-  sounds = [
-    this.coinSound,
-    this.finSlapSound,
-    this.sharkieHurtSound,
-    this.youWinSound,
-    this.gameOverSound,
-    this.fishDeadSound,
-    this.EndbossHurtSound,
-    this.sharkieMovingSound,
-  ];
 
 
     /**
@@ -68,35 +43,12 @@ class World {
     this.canvas = canvas;
     this.keyboard = keyboard;
     this.fishDead = 0;
+    this.statusBar_Endboss.x = 510;
+    this.statusBar_Endboss.y = -100;
+    //muteVolumeSounds();
     this.draw();
     this.setWorld();
-    this.setVolumeSounds();
     this.checkCollisions();
-  }
-
-
-    /**
-   * Mutes the volume of all sounds.
-   *
-   */
-  muteVolumeSounds() {
-    this.sounds.forEach((s) => {
-      s.load();
-      s.volume = 0;
-    });
-  }
-
-    /**
-   * Sets the volume for all sounds.
-   *
-   * This function iterates through each sound in the `sounds` array and sets its volume to 0.2.
-   * It also calls the `load()` method for each sound to ensure it is ready to play.
-   */
-  setVolumeSounds() {
-    this.sounds.forEach((s) => {
-      s.load();
-      s.volume = 0.2;
-    });
   }
 
   /**
@@ -112,11 +64,11 @@ class World {
         if (this.character.isDead() && !this.character.isKilled()) {
           document.getElementById("gameOver").src =
             "./img/6.Botones/Tittles/Game Over/Recurso 12.png";
-          this.gameOverSound.play();
+          gameOverSound.play();
         } else {
           document.getElementById("gameOver").src =
             "./img/6.Botones/Tittles/You win/Recurso 21.png";
-          this.youWinSound.play();
+        youWinSound.play();
         }
         isGameStopped = true;
       } else {
@@ -136,8 +88,11 @@ class World {
     this.bubbles.forEach((bubble) => {
       if (this.endboss.isColliding(bubble)) {
         this.endboss.hit();
-        this.EndbossHurtSound.play();
+        this.endboss.hit();
+      EndbossHurtSound.play();
         this.statusBar_Poison.setPercentage(this.character.poison);
+        this.statusBar_Endboss.setPercentage(this.endboss.energy);
+        bubble.deleteMe(this.bubbles);
       }
     });
   }
@@ -152,16 +107,16 @@ class World {
         if (enemy instanceof Endboss) {
           this.character.hit();
           this.character.hit();
-          this.sharkieHurtSound.play();
+          sharkieHurtSound.play();
           this.statusBar_Life.setPercentage(this.character.energy);
         } else {
           if (this.character.isFinSlap) {
             enemy.hit();
-            this.finSlapSound.play();
-            this.fishDeadSound.play();
+            finSlapSound.play();
+            fishDeadSound.play();
           } else {
             this.character.hit();
-            this.sharkieHurtSound.play();
+            sharkieHurtSound.play();
             this.statusBar_Life.setPercentage(this.character.energy);
           }
         }
@@ -191,13 +146,12 @@ class World {
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
         }
-        this.coinSound.load();
-        this.coinSound.play();
+        coinSound.play();
       }
     });
   }
 
-
+  
   /**
  * Sets the world for the character, endboss, and enemies.
  *
@@ -231,6 +185,7 @@ class World {
     this.addToMap(this.statusBar_Coin);
     this.addToMap(this.statusBar_Life);
     this.addToMap(this.statusBar_Poison);
+    this.addToMap(this.statusBar_Endboss);
     this.ctx.translate(this.camera_x, 0); // Forwards
     //move Camera to the right
     this.ctx.translate(-this.camera_x, 0);

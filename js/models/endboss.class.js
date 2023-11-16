@@ -12,8 +12,9 @@ class Endboss extends MovableObject {
   energy = 100;
   hadFirstContact = false;
   y = 0;
-  x = 2500;
+  x = 3000;
   speed = 0;
+  statusBar_Endboss;
   IMAGES = IMAGES_ENDBOSS_INTRODUCING;
   IMAGES_ENDBOSS_INTRODUCING = IMAGES_ENDBOSS_INTRODUCING;
   IMAGES_ENDBOSS_FLOATING = IMAGES_ENDBOSS_FLOATING;
@@ -21,7 +22,7 @@ class Endboss extends MovableObject {
   IMAGES_ENDBOSS_HURT = IMAGES_ENDBOSS_HURT;
   IMAGES_ENDBOSS_DEAD = IMAGES_ENDBOSS_DEAD;
 
-    /**
+  /**
    * Initializes the constructor.
    *
    * @constructor
@@ -40,12 +41,11 @@ class Endboss extends MovableObject {
   /**
    * Animates the object based on its current state and conditions.
    *
-   */  
+   */
   animate() {
     let i = 0;
-    this.x = 3000;
     setStoppableInterval(() => {
-      if (this.isDead()) {
+      if (this.isDead() || this.x < -720) {
         this.IMAGES = this.IMAGES_ENDBOSS_DEAD;
         this.imageLoop();
         this.isKilled();
@@ -72,9 +72,9 @@ class Endboss extends MovableObject {
         this.x = 2500;
         this.speed = 10;
         this.hadFirstContact = true;
+        this.world.statusBar_Endboss.y = 10;
       }
       i++;
-
     }, 1000 / (fps / 10));
   }
 }

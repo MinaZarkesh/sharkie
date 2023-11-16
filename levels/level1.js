@@ -154,6 +154,18 @@ function initLevel() {
         10,
         0
       ),
+      new StatusBar(
+        [
+          "./img/4. Marcadores/Purple/100_ .png",
+          "./img/4. Marcadores/Purple/80_ .png",
+          "./img/4. Marcadores/Purple/60_ .png",
+          "./img/4. Marcadores/Purple/40_ .png",
+          "./img/4. Marcadores/Purple/20__1.png",
+          "./img/4. Marcadores/Purple/0_ .png",
+        ],
+        10,
+        100
+      ),
     ]
   );
 }

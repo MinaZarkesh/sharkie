@@ -2,7 +2,6 @@ let canvas;
 let world;
 let isGameStopped = false;
 let keyboard;
-let isMute = true;
 
 /**
  * Initializes the application.
@@ -15,22 +14,6 @@ function init() {
   world = new World(canvas, keyboard);
 }
 
-/**
- * Toggles the sound on and off.
- *
- */
-function toggleSound() {
-  let speaker = document.getElementById("btn-speaker");
-  if (isMute) {
-    speaker.src = "./img/speaker-filled-audio-tool.png";
-    isMute =false;
-    world.setVolumeSounds();
-  } else{
-    speaker.src = "./img/enable-sound.png";
-    world.muteVolumeSounds();
-    isMute = true;
-  }
-}
 
 /**
  * /**
@@ -46,6 +29,7 @@ function startGame() {
   document.getElementById("mobile-overview").style = "display: flex";
   document.getElementById("gameOver").style = "display: none";
   document.getElementById("restart").style = "display: none";
+  isMute = true;
   init();
   setStoppableInterval(checkEndGame, 1000);
 }
@@ -96,6 +80,7 @@ function restartGame() {
  */
 function resetGame() {
   isGameStopped = false;
+  // isMute = true;
 }
 
 

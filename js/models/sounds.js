@@ -3,7 +3,6 @@
  *
  */
 function toggleSound() {
-  playSound();
   let speaker = document.getElementById("btn-speaker");
   if (isMute) {
     speaker.src = "./img/speaker-filled-audio-tool.png";
@@ -15,6 +14,9 @@ function toggleSound() {
     isMute = true;
   }
 }
+
+
+
 
 /**
  * Mutes the volume of all sounds.

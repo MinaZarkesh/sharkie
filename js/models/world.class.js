@@ -75,7 +75,7 @@ class World {
         this.checkBubbleEndbossCollision();
         this.checkEndbossPosition();
       }
-    }, 500); //2mal pro sekunde
+    },  1000 / (fps / 10)); //2mal pro sekunde
   }
 
   /**

@@ -4,6 +4,7 @@
  */
 function toggleSound() {
   let speaker = document.getElementById("btn-speaker");
+  let button = document.getElementById("mobileBtn-Sound");
   if (isMute) {
     speaker.src = "./img/speaker-filled-audio-tool.png";
     setVolumeSounds();
@@ -13,6 +14,10 @@ function toggleSound() {
     muteVolumeSounds();
     isMute = true;
   }
+
+  setTimeout(() => {
+    button.blur();
+  }, 1000);
 }
 
 

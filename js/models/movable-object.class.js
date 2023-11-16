@@ -1,6 +1,6 @@
 class MovableObject extends DrawableObject {
   energy = 100;
-  posion = 100;
+  poison = 0;
   //for the keyboard
   world;
   //for moving in otherDirection
@@ -44,9 +44,9 @@ class MovableObject extends DrawableObject {
    *
    */
   throw() {
-    this.poison -= 5;
+    this.poison -=100/5;
     if (this.poison < 0) {
-      this.posion = 0;
+      this.poison = 0;
     } else {
       this.lastThrow = new Date().getTime();
     }

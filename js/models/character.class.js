@@ -8,7 +8,6 @@ class Character extends MovableObject {
     right: 50,
     bottom: 120,
   };
-  bubbles;
   x = 100;
   y = 80;
   img;
@@ -26,10 +25,9 @@ class Character extends MovableObject {
   speed = 5;
   otherDirection = false;
   isFinSlap = false;
-  lastThrow = 0;
+  // lastThrow = 0;
   //For StatusBars
   coinStatus = 0;
-  poison = 0;
   shootImg = 0;
   bubble;
   hasblown = false;
@@ -39,6 +37,7 @@ class Character extends MovableObject {
    */
   constructor() {
     super().loadImage(IMAGES_IDLE[0]);
+    this.poison = 0;
     //for animation
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_LONG_IDLE);
@@ -51,7 +50,7 @@ class Character extends MovableObject {
     this.animate();
   }
 
-    /**
+  /**
    * Updates the `coinStatus` by adding 100 divided by 15 to it.
    * If `coinStatus` exceeds 100, it is set to 100.
    */
@@ -64,16 +63,17 @@ class Character extends MovableObject {
 
   /**
    * Collects a bottle and increases the poison level.
-   * 
+   *
    */
   collectBottle() {
     this.poison += 100 / 5;
     if (this.poison > 100) {
       this.poison = 100;
     }
+    console.log("poison collected: ", this.poison);
   }
 
-    /**
+  /**
    * Throws a bubble.
    *
    */
@@ -90,38 +90,37 @@ class Character extends MovableObject {
     this.lastThrow = new Date().getTime();
     setTimeout(() => {
       this.bubble.deleteMe(this.world.bubbles);
-      this.checkDirection();
+      // this.checkDirection();
     }, 3000);
   }
 
-  checkDirection(){
-    if(this.otherDirection){
-this.bubble.otherDirection = true;
-    }else{
-this.bubble.otherDirection = false;
-    }
-    return this.bubble.otherDirection;
-  }
+  //   checkDirection(){
+  //     if(this.otherDirection){
+  // this.bubble.otherDirection = true;
+  //     }else{
+  // this.bubble.otherDirection = false;
+  //     }
+  //     return this.bubble.otherDirection;
+  //   }
 
-    /**
+  /**
    * Animates the element by calling two different functions repeatedly.
    *
    */
   animate() {
     setStoppableInterval(() => {
-   this.changeMoving();
+      this.changeMoving();
     }, 1000 / fps);
 
     setStoppableInterval(() => {
-    this.changeImages();
+      this.changeImages();
     }, 1000 / (fps / 10));
   }
 
-
-    /**
+  /**
    * Change the movement of the object based on keyboard input.
    */
-  changeMoving(){
+  changeMoving() {
     if (
       this.world.keyboard.RIGHT &&
       this.x < this.world.level.level_end_x &&
@@ -152,27 +151,31 @@ this.bubble.otherDirection = false;
     }
   }
 
-
   /**
    * Change the images based on the current state of the character.
    *
    * @return {undefined} No return value.
    */
-  changeImages(){
+  changeImages() {
     if (this.isDead()) {
       this.IMAGES = this.IMAGES_DEAD;
       this.isKilled();
     } else if (this.isHurt()) {
       this.IMAGES = this.IMAGES_HURT;
     } else if (this.world.keyboard.D) {
-      
       if (this.world.endboss.hadFirstContact && this.poison > 0) {
         this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
       } else {
         this.IMAGES = this.IMAGES_ATTACK_WHITE_BUBBLE;
       }
       this.bubbleAttack();
-      this.throw();
+      
+      if(!this.isThrown()){
+        this.throw();
+        this.world.statusBar_Poison.setPercentage(this.poison);
+        console.log("poison throw: ", this.poison);
+      }
+      
     } else if (this.world.keyboard.SPACE && this.isFinSlap) {
       this.IMAGES = this.IMAGES_ATTACK_FIN_SLAP;
     } else {
@@ -186,7 +189,7 @@ this.bubble.otherDirection = false;
     this.imageLoop(); // playAnimation
   }
 
-    /**
+  /**
    * Determines if the player is swimming.
    *
    * @return {boolean} Returns true if any of the arrow keys are pressed, indicating that the player is swimming. Otherwise, returns false.
@@ -200,7 +203,7 @@ this.bubble.otherDirection = false;
     );
   }
 
-    /**
+  /**
    * Executes the bubble attack.
    *
    */
@@ -215,7 +218,7 @@ this.bubble.otherDirection = false;
     }
   }
 
-    /**
+  /**
    * Moves the object to the left.
    *
    */
@@ -225,7 +228,7 @@ this.bubble.otherDirection = false;
     this.otherDirection = true;
   }
 
-    /**
+  /**
    * Moves the object to the right.
    *
    */

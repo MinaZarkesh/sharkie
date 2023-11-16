@@ -10,12 +10,13 @@ class World {
 
   //sollte noch nicht vorher drin sein
   bubbles = [
-    new Bubble(),
-    new Bubble(),
-    new Bubble(),
-    new Bubble(),
-    new Bubble(),
+    // new Bubble(),
+    // new Bubble(),
+    // new Bubble(),
+    // new Bubble(),
+    // new Bubble(),
   ];
+  tempBubble;
   //StatusBars
   statusBar_Coin = this.level.statusbars[0];
   statusBar_Life = this.level.statusbars[1];
@@ -100,7 +101,6 @@ class World {
         this.endboss.hit();
         this.endboss.hit();
         EndbossHurtSound.play();
-        this.statusBar_Poison.setPercentage(this.character.poison);
         this.statusBar_Endboss.setPercentage(this.endboss.energy);
         bubble.deleteMe(this.bubbles);
       }
@@ -153,6 +153,9 @@ class World {
           co.x = -100;
           co.y = 500;
           this.character.collectBottle();
+          this.tempBubble = new Bubble();
+          this.bubbles.push(this.tempBubble);
+          console.log(this.bubbles.length);
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
         }

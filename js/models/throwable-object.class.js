@@ -83,5 +83,6 @@ class ThrowableObject extends MovableObject {
    */
   deleteMe(bubbles) {
     bubbles.shift();
+    
   }
 }

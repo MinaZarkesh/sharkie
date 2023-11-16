@@ -9,11 +9,12 @@ let keyboard;
  */
 function init() {
   canvas = document.getElementById("canvas");
+  isMute = true;
+  
   initLevel();
   keyboard = new Keyboard();
   world = new World(canvas, keyboard);
 }
-
 
 /**
  * /**
@@ -22,6 +23,9 @@ function init() {
  * @return {undefined} No return value.
  */
 function startGame() {
+  //  muteVolumeSounds();
+  //  document.getElementById("mobileBtn-Sound").src="./img/enable-sound.png";
+  document.getElementById("mobileBtn-Sound").src="./img/speaker-filled-audio-tool.png";
   document.getElementById("game").classList.remove("d-none");
   document.getElementById("canvas").classList.remove("d-none");
   document.getElementById("startScreen").style.display = "none";
@@ -29,7 +33,7 @@ function startGame() {
   document.getElementById("mobile-overview").style = "display: flex";
   document.getElementById("gameOver").style = "display: none";
   document.getElementById("restart").style = "display: none";
-  isMute = true;
+
   init();
   setStoppableInterval(checkEndGame, 1000);
 }
@@ -80,7 +84,6 @@ function restartGame() {
  */
 function resetGame() {
   isGameStopped = false;
-  // isMute = true;
 }
 
 

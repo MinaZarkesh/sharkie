@@ -7,7 +7,7 @@ class World {
   enemies = this.level.enemies;
   backgroundObjects = this.level.backgroundobjects;
   collectableObjects = this.level.collectableObjects;
-  
+
   //sollte noch nicht vorher drin sein
   bubbles = [
     new Bubble(),
@@ -30,9 +30,7 @@ class World {
   camera_x = 0;
   isGreen = false;
 
-
-
-    /**
+  /**
    * Constructor function for the class.
    *
    * @param {Object} canvas - The canvas element.
@@ -45,16 +43,15 @@ class World {
     this.fishDead = 0;
     this.statusBar_Endboss.x = 510;
     this.statusBar_Endboss.y = -100;
-    //muteVolumeSounds();
     this.draw();
     this.setWorld();
     this.checkCollisions();
   }
 
   /**
- * Checks for collisions in the game.
- *
- */
+   * Checks for collisions in the game.
+   *
+   */
   checkCollisions() {
     setStoppableInterval(() => {
       if (
@@ -68,15 +65,28 @@ class World {
         } else {
           document.getElementById("gameOver").src =
             "./img/6.Botones/Tittles/You win/Recurso 21.png";
-        youWinSound.play();
+          youWinSound.play();
         }
         isGameStopped = true;
       } else {
         this.checkEnemyCollisions();
         this.checkCollisionsCO();
         this.checkBubbleEndbossCollision();
+        this.checkEndbossPosition();
       }
     }, 500); //2mal pro sekunde
+  }
+
+  /**
+   * Checks the position of the endboss and updates its energy if it is at position x = 0.
+   *
+   */
+  checkEndbossPosition() {
+    if (this.endboss.x < -800) {
+      this.endboss.energy = 0;
+      this.endboss.isDead();
+      this.endboss.isKilled();
+    }
   }
 
   /**
@@ -89,7 +99,7 @@ class World {
       if (this.endboss.isColliding(bubble)) {
         this.endboss.hit();
         this.endboss.hit();
-      EndbossHurtSound.play();
+        EndbossHurtSound.play();
         this.statusBar_Poison.setPercentage(this.character.poison);
         this.statusBar_Endboss.setPercentage(this.endboss.energy);
         bubble.deleteMe(this.bubbles);
@@ -97,7 +107,7 @@ class World {
     });
   }
 
-    /**
+  /**
    * Checks for collisions with enemies.
    *
    */
@@ -126,7 +136,7 @@ class World {
 
   //check if Character is Collinding a Collactable Object, if it`s a throwable Object, it moves to "Bottles"-Array
 
-    /**
+  /**
    * Check for collisions with collectable objects.
    *
    */
@@ -151,11 +161,10 @@ class World {
     });
   }
 
-  
   /**
- * Sets the world for the character, endboss, and enemies.
- *
- */
+   * Sets the world for the character, endboss, and enemies.
+   *
+   */
   setWorld() {
     this.character.world = this;
     this.endboss.world = this;
@@ -165,7 +174,7 @@ class World {
     this.enemies.push(this.endboss);
   }
 
-    /**
+  /**
    * Draws the game on the canvas.
    *
    */
@@ -200,7 +209,7 @@ class World {
     }
   }
 
-    /**
+  /**
    * Adds objects to the map.
    *
    * @param {Array} objects - The objects to be added to the map.
@@ -211,7 +220,7 @@ class World {
     });
   }
 
-    /**
+  /**
    * Add a movableObject to the map.
    *
    * @param {movableObject} mo - The movableObject to be added.
@@ -227,7 +236,7 @@ class World {
     }
   }
 
-    /**
+  /**
    * Flips an image horizontally.
    *
    * @param {Object} mo - The image object to be flipped.
@@ -239,8 +248,7 @@ class World {
     mo.x = mo.x * -1;
   }
 
-
-    /**
+  /**
    * Flips the image back horizontally.
    *
    * @param {object} mo - The image object to be flipped back.

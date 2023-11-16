@@ -3,7 +3,7 @@ class ThrowableObject extends MovableObject {
   acceleration = 2.5;
   speedX = 10;
 
-    /**
+  /**
    * Constructor function for initializing the object.
    *
    */
@@ -15,7 +15,7 @@ class ThrowableObject extends MovableObject {
     this.y = 80;
   }
 
-    /**
+  /**
    * Apply gravity to the object.
    *
    */
@@ -28,7 +28,7 @@ class ThrowableObject extends MovableObject {
     }, 1000 / fps);
   }
 
-    /**
+  /**
    * Check if the object is above the ground.
    *
    * @return {boolean} Returns true if the object is above the ground, false otherwise.
@@ -38,15 +38,21 @@ class ThrowableObject extends MovableObject {
     return this.y < 160;
   }
 
-    /**
+  /**
    * Throws the given x and y values.
    *
    * @param {type} x - The x value to throw.
    * @param {type} y - The y value to throw.
    */
   throw(x, y) {
-    this.x = x + 155;
     this.y = y + 115;
+
+    // let tempDirection = this.otherDirection;
+    // if (tempDirection) {
+    //   this.x = x - 500;
+    // } else {
+      this.x = x + 115;
+    // }
 
     let bubbleInterval = setInterval(() => {
       if (this.width < 50) {
@@ -54,16 +60,27 @@ class ThrowableObject extends MovableObject {
         this.height += 10;
       }
       this.speedX = 10;
-      this.x += this.speedX;
+
+      // if (tempDirection) {
+      //   this.moveLeft();
+      // } else {
+        this.moveRight();
+      // }
     }, 1000 / (fps / 10));
   }
 
+  moveLeft() {
+    this.x -= this.speedX;
+  }
+  moveRight() {
+    this.x += this.speedX;
+  }
   /**
    * Delete the first element from the given array bubbles.
    *
    * @param {Array} bubbles - The array from which the first element will be deleted.
-   * 
-   */  
+   *
+   */
   deleteMe(bubbles) {
     bubbles.shift();
   }

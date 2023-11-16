@@ -90,9 +90,18 @@ class Character extends MovableObject {
     this.lastThrow = new Date().getTime();
     setTimeout(() => {
       this.bubble.deleteMe(this.world.bubbles);
+      this.checkDirection();
     }, 3000);
   }
 
+  checkDirection(){
+    if(this.otherDirection){
+this.bubble.otherDirection = true;
+    }else{
+this.bubble.otherDirection = false;
+    }
+    return this.bubble.otherDirection;
+  }
 
     /**
    * Animates the element by calling two different functions repeatedly.
@@ -156,6 +165,7 @@ class Character extends MovableObject {
     } else if (this.isHurt()) {
       this.IMAGES = this.IMAGES_HURT;
     } else if (this.world.keyboard.D) {
+      
       if (this.world.endboss.hadFirstContact && this.poison > 0) {
         this.IMAGES = this.IMAGES_ATTACK_GREEN_BUBBLE;
       } else {

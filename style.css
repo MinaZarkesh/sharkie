@@ -12,8 +12,32 @@ body {
   align-items: center;
   margin: 0px;
   padding: 0px;
+  /* font-size: 30px; */
+}
+#Instructions-btn{
+  font-family: "sharkyFont";
+  color: rgba(83, 26, 130, 255);
+  font-size: 30px;
+  background-color: rgb(127,255,224);
+  padding: 8px 32px ;
+  border-radius: 16px;
+  border: white solid 3px;
 }
 
+#InstructionsScreen{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.start-Buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+
+#Instructions-btn:hover{
+  transform: scale(1.1);
+}
 #Landscape {
   /* position: absolute; */
   display: none;
@@ -239,8 +263,15 @@ canvas {
 }
 
 #startGame img {
-  width: 50%;
+  width: 100%;
   min-width: 180px;
+}
+#startGame {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  /* padding: 8px; */
+  justify-content: left;
 }
 #startGame:hover img {
   transform: scale(1.1);
@@ -257,6 +288,7 @@ button:hover {
   width: 100vw;
   text-align: center;
   align-items: center;
+  justify-content:center;
 }
 
 .Start-Instructions {

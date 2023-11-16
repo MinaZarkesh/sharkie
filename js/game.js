@@ -28,11 +28,16 @@ start.innerHTML = `
       <h3 id="Start-SpaceBarh3">Fin Slap for Puffer Fish</h3>
     </div>
   </div>
-  <div>
-    <button id="startGame" onclick="startGame()">
-      <img src="./img/6.Botones/Start/2.png" alt="" />
-    </button>
-  </div>
+  <div class="start-Buttons">
+
+<button id="startGame" onclick="startGame()">
+  <img src="./img/6.Botones/Start/2.png" alt="" />
+</button>
+
+<div id="InstructionsScreen">
+<button id="Instructions-btn">Instructions</button>
+</div>
+</div>
 </div>`;
 
 }

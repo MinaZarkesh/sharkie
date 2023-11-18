@@ -14,28 +14,85 @@ body {
   padding: 0px;
   /* font-size: 30px; */
 }
-#Instructions-btn{
+#introductionBTN {
   font-family: "sharkyFont";
   color: rgba(83, 26, 130, 255);
   font-size: 30px;
-  background-color: rgb(127,255,224);
-  padding: 8px 32px ;
+  background-color: rgb(127, 255, 224);
+  padding: 8px 32px;
   border-radius: 16px;
   border: white solid 3px;
 }
 
-#InstructionsScreen{
-display: flex;
-align-items: center;
-justify-content: center;
+#instructions {
+  position: absolute;
+  /* display: flex; */
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  align-items: center;
+  justify-content: center;
 }
-.start-Buttons{
+
+.text-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#instructionText {
+  margin: 16px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 24px;
+  color: rgb(100, 112, 163);
+  font-weight: 200;
+  /* font-family: "sharkyFont"; */
+  max-width: 650px;
+  max-height: 300px;
+}
+
+#closeBTN {
+  position: absolute;
+  top: 0px;
+  right: 16px;
+  /* font-size: 30px;
+  padding: 4px 8px; */
+
+  font-family: "sharkyFont";
+  color: rgba(83, 26, 130, 255);
+  font-size: 30px;
+  background-color: rgb(127, 255, 224);
+  padding: 8px 32px;
+  border-radius: 16px;
+  border: white solid 3px;
+}
+
+#closeBTN:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#instructions h3 {
+  font-size: 30px;
+  padding: 8px;
+  color: rgb(100, 112, 163);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.start-Buttons {
   display: flex;
   flex-direction: row-reverse;
   gap: 5%;
 }
 
-#Instructions-btn:hover{
+#introductionBTN:hover {
   transform: scale(1.1);
 }
 #Landscape {
@@ -247,7 +304,7 @@ canvas {
 #gameOver {
   position: absolute;
   width: 30%;
-  top: 15%;
+  top: 20%;
 }
 .startScreen {
   overflow: hidden;
@@ -288,7 +345,7 @@ button:hover {
   width: 100vw;
   text-align: center;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 }
 
 .Start-Instructions {

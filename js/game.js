@@ -3,10 +3,13 @@ let world;
 let isGameStopped = false;
 let keyboard;
 
-
-function init(){
+/**
+ * Initializes the application by setting the innerHTML of the startScreen element.
+ *
+ */
+function init() {
   let start = document.getElementById("startScreen");
-start.innerHTML = `
+  start.innerHTML = `
   <div class="backgound">
   <h1>Minas Sharkie</h1>
   <h2>defeat the monsters of the ocean</h2>
@@ -34,13 +37,60 @@ start.innerHTML = `
   <img src="./img/6.Botones/Start/2.png" alt="" />
 </button>
 
-<div id="InstructionsScreen">
-<button id="Instructions-btn">Instructions</button>
+<div id="instructions" class="d-none"> 
+</div>
+
+<div>
+<button onclick="showIntroductionScreen()" id="introductionBTN">Instructions</button>
 </div>
 </div>
 </div>`;
-
 }
+
+/**
+ * Closes the introduction by adding the "d-none" class to the element with the ID "instructions".
+ *
+ */
+function closeIntroduction() {
+  document.getElementById("instructions").classList.add("d-none");
+}
+
+/**
+ * Displays the introduction screen.
+ *
+ */
+function showIntroductionScreen() {
+  let text = document.getElementById("instructions");
+  text.classList.remove("d-none");
+  text.classList.add("text-center");
+  text.innerHTML = InstructionTextHTML();
+  let button = document.getElementById("introductionBTN");
+  setTimeout(() => {
+    button.blur();
+  }, 1000);
+}
+
+/**
+ * Generates the HTML for the instruction text of the Minas Sharkie Game.
+ *
+ * @return {string} The HTML code for the instruction text.
+ */
+function InstructionTextHTML() {
+  return /*html*/ `
+    <div id="instructionText">
+
+<h3>Minas Sharkie Game Instructions</h3>
+<h3 onclick="closeIntroduction()" id="closeBTN">X</h3>
+<!-- <button >X</button> -->
+<span>
+Press and hold the arrow keys to move Sharkie <br>
+Press and hold the spacebar to hit the pufferfish<br>
+Press and hold the D key to damage the big Endboss with a bubble<br>
+Collect the poison bottles to make the bubble toxic and cause more damage to the big Endboss.</span>
+</div>
+`;
+}
+
 /**
  * Initializes the application.
  *
@@ -48,7 +98,7 @@ start.innerHTML = `
 function initGame() {
   canvas = document.getElementById("canvas");
   isMute = true;
-  
+
   initLevel();
   keyboard = new Keyboard();
   world = new World(canvas, keyboard);
@@ -63,7 +113,8 @@ function initGame() {
 function startGame() {
   //  muteVolumeSounds();
   //  document.getElementById("mobileBtn-Sound").src="./img/enable-sound.png";
-  document.getElementById("mobileBtn-Sound").src="./img/speaker-filled-audio-tool.png";
+  document.getElementById("mobileBtn-Sound").src =
+    "./img/speaker-filled-audio-tool.png";
   document.getElementById("game").classList.remove("d-none");
   document.getElementById("canvas").classList.remove("d-none");
   document.getElementById("startScreen").style.display = "none";
@@ -76,7 +127,6 @@ function startGame() {
   setStoppableInterval(checkEndGame, 1000);
 }
 
-
 /**
  * Checks if the game is stopped and calls the endScreen function if it is.
  *
@@ -85,11 +135,10 @@ function startGame() {
 function checkEndGame() {
   if (isGameStopped) {
     endScreen();
-  }else{
+  } else {
     //check if its landscape mode
   }
 }
-
 
 /**
  * Displays the end screen and restart button, and stops the game.
@@ -100,7 +149,6 @@ function endScreen() {
   document.getElementById("restart").style = "display: flex";
   stopGame();
 }
-
 
 /**
  * Restart the game.
@@ -119,7 +167,6 @@ function restartGame() {
   resetGame();
 }
 
-
 /**
  * Resets the game.
  *
@@ -127,7 +174,6 @@ function restartGame() {
 function resetGame() {
   isGameStopped = false;
 }
-
 
 /**
  * Stops the game by clearing all interval IDs.

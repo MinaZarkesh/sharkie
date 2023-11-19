@@ -3,10 +3,10 @@ class Character extends MovableObject {
   width = 200;
   //for colliding
   offset = {
-    top: 80,
-    left: 35,
-    right: 50,
-    bottom: 120,
+    top: 100,
+    left: 40,
+    right: 80,
+    bottom: 140,
   };
   x = 100;
   y = 80;

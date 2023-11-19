@@ -85,6 +85,9 @@ let sharkieMovingSound = new Audio(
   "./audio/705825__slot5000__swim16_moving.ogg"
 );
 
+let backgroundmusic = new Audio(
+  "./audio/knall die schlampe.mp3");
+
 let sounds = [
   coinSound,
   finSlapSound,
@@ -94,4 +97,5 @@ let sounds = [
   fishDeadSound,
   EndbossHurtSound,
   sharkieMovingSound,
+  backgroundmusic
 ];

@@ -19,7 +19,7 @@ class MovableObject extends DrawableObject {
  *
  */
   hit() {
-    this.energy -= 5;
+    this.energy -= 3;
     if (this.energy < 0) {
       this.energy = 0;
 
@@ -63,7 +63,6 @@ class MovableObject extends DrawableObject {
     return timepassed < 1;
   }
 
-
   /**
    * Checks if the object is currently hurt based on the time elapsed since the last hit.
    *
@@ -72,7 +71,7 @@ class MovableObject extends DrawableObject {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; // Diefference in ms
     timepassed = timepassed / 1000; //timepassed in sec
-    return timepassed < 1;
+    return timepassed < 3;
   }
 
     /**

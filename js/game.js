@@ -98,7 +98,10 @@ Collect the poison bottles to make the bubble toxic and cause more damage to the
 function initGame() {
   canvas = document.getElementById("canvas");
   isMute = true;
-
+  loadVolumeSounds();
+  backgroundmusic.volume =0.2;
+  // backgroundmusic.play();
+  // backgroundmusic.loop = true;
   initLevel();
   keyboard = new Keyboard();
   world = new World(canvas, keyboard);
@@ -148,6 +151,8 @@ function endScreen() {
   document.getElementById("gameOver").style = "display: flex";
   document.getElementById("restart").style = "display: flex";
   stopGame();
+  backgroundmusic.loop = false;
+  backgroundmusic.pause();
 }
 
 /**

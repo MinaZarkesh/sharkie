@@ -75,7 +75,7 @@ class World {
         this.checkBubbleEndbossCollision();
         this.checkEndbossPosition();
       }
-    },  1000 / (fps / 10)); //2mal pro sekunde
+    }, 1000 / (fps / 10)); //2mal pro sekunde
   }
 
   /**
@@ -125,10 +125,13 @@ class World {
             finSlapSound.play();
             fishDeadSound.play();
           } else {
-            this.character.hit();
-            sharkieHurtSound.play();
-            this.statusBar_Life.setPercentage(this.character.energy);
-          }
+            if(!this.character.isHurt()){
+              this.character.hit();
+              sharkieHurtSound.play();
+              this.statusBar_Life.setPercentage(this.character.energy);
+          
+            }
+           }
         }
       }
     });
@@ -159,6 +162,7 @@ class World {
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
         }
+        coinSound.load();
         coinSound.play();
       }
     });
@@ -234,6 +238,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
+    mo.drawRedFrame(this.ctx);
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

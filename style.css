@@ -54,13 +54,13 @@ body {
   font-weight: 200;
   /* font-family: "sharkyFont"; */
   max-width: 650px;
-  max-height: 300px;
+  max-height: 500px;
 }
 
 #closeBTN {
   position: absolute;
   top: 0px;
-  right: 16px;
+  right: 8px;
   /* font-size: 30px;
   padding: 4px 8px; */
 
@@ -207,12 +207,21 @@ canvas {
 
 #mobile-overview {
   position: absolute;
-  top: 70%;
+  top: 80%;
 }
 
 #mobileBtn-Sound {
   position: absolute;
   bottom: 1%;
+  right: 2%;
+  padding: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#mobileBtn-Music {
+  position: absolute;
+  bottom: 12%;
   right: 2%;
   padding: 16px;
   border-radius: 50%;

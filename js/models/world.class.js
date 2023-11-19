@@ -162,6 +162,7 @@ class World {
           this.statusBar_Poison.setPercentage(this.character.poison);
           co.disappear(this.collectableObjects);
         }
+
         coinSound.load();
         coinSound.play();
       }
@@ -238,7 +239,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    mo.drawRedFrame(this.ctx);
+    //  mo.drawRedFrame(this.ctx);
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

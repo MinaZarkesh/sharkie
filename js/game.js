@@ -86,7 +86,12 @@ function InstructionTextHTML() {
 Press and hold the arrow keys to move Sharkie <br>
 Press and hold the spacebar to hit the pufferfish<br>
 Press and hold the D key to damage the big Endboss with a bubble<br>
-Collect the poison bottles to make the bubble toxic and cause more damage to the big Endboss.</span>
+Collect the poison bottles to make the bubble toxic and cause more damage to the big Endboss.<br>
+<br> 
+<b>Help! Where is the Endboss ?<b><br>
+
+Kill 9 Fish before you are ready for the Endboss.
+</span>
 </div>
 `;
 }
@@ -97,11 +102,17 @@ Collect the poison bottles to make the bubble toxic and cause more damage to the
  */
 function initGame() {
   canvas = document.getElementById("canvas");
-  isMute = true;
-  loadVolumeSounds();
-  backgroundmusic.volume =0.2;
-  // backgroundmusic.play();
-  // backgroundmusic.loop = true;
+  // loadVolumeSounds();
+  // setMusic();
+  backgroundmusic.volume = 0.1;
+  backgroundmusic.loop = true;
+  // setTimeout(() => {
+  //   backgroundmusic.pause();
+  //   backgroundmusic.src =
+  //     "./audio/561391__bloodpixelhero__game-music-time-of-action.wav";
+  //   backgroundmusic.play();
+  //   backgroundmusic.loop = true;
+  // }, 25000);
   initLevel();
   keyboard = new Keyboard();
   world = new World(canvas, keyboard);
@@ -114,7 +125,9 @@ function initGame() {
  * @return {undefined} No return value.
  */
 function startGame() {
-  //  muteVolumeSounds();
+  isMute = true;
+  isMuteMusic = true;
+  loadVolumeSounds();
   //  document.getElementById("mobileBtn-Sound").src="./img/enable-sound.png";
   document.getElementById("mobileBtn-Sound").src =
     "./img/speaker-filled-audio-tool.png";

@@ -87,10 +87,10 @@ Press and hold the arrow keys to move Sharkie <br>
 Press and hold the spacebar to hit the pufferfish<br>
 Press and hold the D key to damage the big Endboss with a bubble<br>
 Collect the poison bottles to make the bubble toxic and cause more damage to the big Endboss.<br>
-<br> 
+<!-- <br> 
 <b>Help! Where is the Endboss ?<b><br>
 
-Kill 9 Fish before you are ready for the Endboss.
+Kill 9 Fish before you are ready for the Endboss. -->
 </span>
 </div>
 `;

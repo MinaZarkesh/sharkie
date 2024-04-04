@@ -64,8 +64,8 @@ class Endboss extends MovableObject {
       //set new position if 10 Fish are dead
       if (
         !this.hadFirstContact &&
-        this.world.character.x > this.world.level.level_end_x - 20 &&
-        this.world.fishDead > 9
+        this.world.character.x > this.world.level.level_end_x - 20
+        //  && this.world.fishDead > 9
       ) {
         //if 10/15 Fish dead;
         i = 0;

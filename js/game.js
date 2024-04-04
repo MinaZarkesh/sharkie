@@ -34,16 +34,18 @@ function init() {
   <div class="start-Buttons">
 
 <button id="startGame" onclick="startGame()">
-  <img src="./img/6.Botones/Start/2.png" alt="" />
+  Start
 </button>
-
 <div id="instructions" class="d-none"> 
 </div>
 
 <div>
 <button onclick="showIntroductionScreen()" id="introductionBTN">Instructions</button>
+
 </div>
+
 </div>
+<a class="portfolio-link" href="https://mina-zarkesh.de">Portfolio</a>
 </div>`;
 }
 
